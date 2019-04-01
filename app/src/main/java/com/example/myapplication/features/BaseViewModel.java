@@ -1,6 +1,6 @@
 package com.example.myapplication.features;
 
-public class MvpPresenter<View extends MvpView> {
+public class BaseViewModel <View extends InterfaceView> {
 
     protected View view;
 

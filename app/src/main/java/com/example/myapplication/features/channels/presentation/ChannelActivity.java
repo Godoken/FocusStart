@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.features.BaseActivity;
-import com.example.myapplication.features.MvpPresenter;
-import com.example.myapplication.features.MvpView;
+import com.example.myapplication.features.BaseViewModel;
+import com.example.myapplication.features.InterfaceView;
 import com.example.myapplication.features.channels.domain.model.Channel;
 
 import java.util.List;
@@ -25,7 +25,18 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
     private Button createChannelButton;
     private ChannelAdapter adapter;
 
-    private ChannelListPresenter presenter;
+    private ChannelActivityViewModel channelActivityViewModel;
+
+    @Override
+    protected BaseViewModel<ChannelListView> getViewModel() {
+        channelActivityViewModel = new ChannelActivityViewModel();
+        return channelActivityViewModel;
+    }
+
+    @Override
+    protected InterfaceView getInterfaceView() {
+        return this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,36 +54,24 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         createChannelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onCreateChannelClicked();
+                channelActivityViewModel.onCreateChannelClicked();
             }
         });
 
         adapter = new ChannelAdapter(this, new ChannelAdapter.SelectChannelListener() {
             @Override
             public void onChannelSelect(Channel channel) {
-                presenter.onChannelSelected(channel);
+                channelActivityViewModel.onChannelSelected(channel);
             }
 
             @Override
             public void onChannelLongClick(Channel channel) {
-                presenter.onChannelLongClicked(channel);
+                channelActivityViewModel.onChannelLongClicked(channel);
             }
         });
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    @Override
-    protected MvpPresenter<ChannelListView> getPresenter() {
-
-        presenter = PresenterFactory.createPresenter(this);
-        return presenter;
-    }
-
-    @Override
-    protected <T extends MvpView> T getMvpView() {
-        return null;
     }
 
     @Override

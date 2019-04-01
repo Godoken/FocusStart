@@ -52,19 +52,19 @@ final class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ChannelHo
     class ChannelHolder extends RecyclerView.ViewHolder {
 
         private final TextView channelNameView;
-        private final TextView channelAuthorView;
+        private final TextView channelUrlView;
         private final SelectChannelListener selectChannelListener;
 
         ChannelHolder(View view, SelectChannelListener selectChannelListener) {
             super(view);
             this.selectChannelListener = selectChannelListener;
             channelNameView = view.findViewById(R.id.channel_item_name);
-            channelAuthorView = view.findViewById(R.id.channel_item_author);
+            channelUrlView = view.findViewById(R.id.channel_item_url);
         }
 
         void bind(final Channel channel) {
             channelNameView.setText(channel.getName());
-            channelAuthorView.setText(channel.getAuthor());
+            channelUrlView.setText(channel.getUrl());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,9 +87,9 @@ final class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ChannelHo
 
     interface SelectChannelListener {
 
-        void onChannelSelect(Channel book);
+        void onChannelSelect(Channel channel);
 
-        void onChannelLongClick(Channel book);
+        void onChannelLongClick(Channel channel);
 
     }
 
