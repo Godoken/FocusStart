@@ -12,6 +12,7 @@ final public class Channel {
 
         this.name = name;
         this.news = news;
+        this.url = url;
 
     }
 
