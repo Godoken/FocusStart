@@ -8,8 +8,16 @@ import com.example.myapplication.network.Carry;
 import java.util.List;
 
 public class ChannelsRepositoryImpl implements ChannelsRepository {
+
+    private final ChannelsDataSource channelsDataSource;
+
+    public ChannelsRepositoryImpl(){
+        channelsDataSource = new ChannelDataSourceIImpl();
+    }
     @Override
     public void loadChannels(Carry<List<Channel>> carry) {
+
+        channelsDataSource.getChannels(carry);
 
     }
 

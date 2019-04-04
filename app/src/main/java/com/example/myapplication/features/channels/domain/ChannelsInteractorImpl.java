@@ -12,12 +12,13 @@ public class ChannelsInteractorImpl implements ChannelsInteractor {
     private final ChannelsRepository repository;
 
     public ChannelsInteractorImpl() {
-        this.repository = new ChannelsRepositoryImpl();
+        repository = new ChannelsRepositoryImpl();
     }
 
     @Override
     public void loadChannels(Carry<List<Channel>> carry) {
 
+        repository.loadChannels(carry);
     }
 
     @Override
