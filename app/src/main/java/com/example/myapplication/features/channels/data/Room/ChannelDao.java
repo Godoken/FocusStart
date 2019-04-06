@@ -4,6 +4,7 @@ import com.example.myapplication.features.channels.domain.model.Channel;
 
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -19,6 +20,6 @@ public interface ChannelDao {
     void delete(Channel channel);
 
     @Query("SELECT * FROM channel")
-    List<Channel> getAllChannels();
+    LiveData<List<Channel>> getAllChannels();
 
 }
