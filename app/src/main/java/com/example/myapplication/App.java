@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.app.Application;
 import android.content.Context;
 
-import com.example.myapplication.background.DatabaseWorker;
 import com.example.myapplication.features.channels.data.Room.AppDataBase;
 
 import androidx.annotation.NonNull;

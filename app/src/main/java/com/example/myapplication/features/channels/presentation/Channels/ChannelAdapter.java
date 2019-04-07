@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.presentation;
+package com.example.myapplication.features.channels.presentation.Channels;
 
 import android.content.Context;
 import android.view.LayoutInflater;

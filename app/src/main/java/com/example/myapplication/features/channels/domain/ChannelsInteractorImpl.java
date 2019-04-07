@@ -1,5 +1,6 @@
 package com.example.myapplication.features.channels.domain;
 
+import com.example.myapplication.exceptions.EmptyBodyException;
 import com.example.myapplication.features.channels.data.ChannelsRepositoryImpl;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
@@ -10,6 +11,8 @@ import java.util.List;
 public class ChannelsInteractorImpl implements ChannelsInteractor {
 
     private final ChannelsRepository repository;
+
+    private String channel_news;
 
     public ChannelsInteractorImpl() {
         repository = new ChannelsRepositoryImpl();
@@ -22,7 +25,20 @@ public class ChannelsInteractorImpl implements ChannelsInteractor {
     }
 
     @Override
-    public void showNews(String url, Carry<Channel> carry) {
+    public void showNews(String url, Carry<String> carry) {
+
+        repository.loadChannel(url, new Carry<Channel>() {
+            @Override
+            public void onSuccess(Channel result) {
+                channel_news = result.getNews();
+                carry.onSuccess(channel_news);
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                carry.onFailure(new EmptyBodyException());
+            }
+        });
 
     }
 

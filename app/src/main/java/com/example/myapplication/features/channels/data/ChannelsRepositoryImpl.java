@@ -22,7 +22,9 @@ public class ChannelsRepositoryImpl implements ChannelsRepository {
     }
 
     @Override
-    public void loadChannel(String id, Carry<Channel> carry) {
+    public void loadChannel(String url, Carry<Channel> carry) {
+
+        channelsDataSource.getChannel(url, carry);
 
     }
 

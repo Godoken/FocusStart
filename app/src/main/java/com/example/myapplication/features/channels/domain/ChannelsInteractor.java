@@ -10,7 +10,7 @@ public interface ChannelsInteractor {
 
     void loadChannels(Carry<List<Channel>> carry);
 
-    void showNews(String url, Carry<Channel> carry);
+    void showNews(String url, Carry<String> carry);
 
     void createChannel(Channel channel, Carry<Channel> carry);
 

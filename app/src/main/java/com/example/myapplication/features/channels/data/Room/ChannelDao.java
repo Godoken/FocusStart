@@ -22,4 +22,6 @@ public interface ChannelDao {
     @Query("SELECT * FROM channel")
     LiveData<List<Channel>> getAllChannels();
 
+    @Query("SELECT * FROM channel WHERE url = :channelUrl")
+    LiveData<Channel> getChannelByUrl(String channelUrl);
 }

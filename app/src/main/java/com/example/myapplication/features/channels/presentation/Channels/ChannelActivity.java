@@ -1,5 +1,6 @@
-package com.example.myapplication.features.channels.presentation;
+package com.example.myapplication.features.channels.presentation.Channels;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import com.example.myapplication.features.BaseActivity;
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.InterfaceView;
 import com.example.myapplication.features.channels.domain.model.Channel;
+import com.example.myapplication.features.news.presentation.NewsActivity;
 
 import java.util.List;
 
@@ -94,5 +96,12 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
     @Override
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showNews(String news) {
+        Intent intent = new Intent(this, NewsActivity.class);
+        intent.putExtra("news", news);
+        startActivity(intent);
     }
 }

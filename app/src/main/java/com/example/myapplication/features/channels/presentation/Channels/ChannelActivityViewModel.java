@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.presentation;
+package com.example.myapplication.features.channels.presentation.Channels;
 
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.channels.domain.ChannelsInteractor;
@@ -48,11 +48,12 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
     public void onChannelSelected(Channel channel) {
 
         view.showProgress();
-        interactor.showNews(channel.getUrl(), new Carry<Channel>() {
+        interactor.showNews(channel.getUrl(), new Carry<String>() {
 
             @Override
-            public void onSuccess(Channel result) {
+            public void onSuccess(String result_news) {
                 view.hideProgress();
+                view.showNews(result_news);
                 // do something
             }
 

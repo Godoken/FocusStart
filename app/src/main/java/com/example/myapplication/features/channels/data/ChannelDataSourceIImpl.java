@@ -19,10 +19,14 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
     private Data data;
     private List<Channel> channels = new ArrayList<>();
     private LiveData<List<Channel>> listLiveData;
+
+    private LiveData<Channel> channelLiveData;
+    private Channel channel;
     @Override
     public void getChannels(Carry<List<Channel>> carry) {
 
         listLiveData = App.getDataBase().getChannelDao().getAllChannels();
+
 
         listLiveData.observeForever(new Observer<List<Channel>>() {
             @Override
@@ -40,8 +44,22 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
     }
 
     @Override
-    public void getChannel(String id, Carry<Channel> carry) {
+    public void getChannel(String url, Carry<Channel> carry) {
 
+        channelLiveData = App.getDataBase().getChannelDao().getChannelByUrl(url);
+
+        channelLiveData.observeForever(new Observer<Channel>() {
+            @Override
+            public void onChanged(Channel channel) {
+
+                if (channelLiveData != null){
+                    channel = channelLiveData.getValue();
+                    carry.onSuccess(channel);
+                } else {
+                    carry.onFailure(new EmptyBodyException());
+                }
+            }
+        });
     }
 
     @Override
