@@ -14,7 +14,6 @@ import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.InterfaceView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class NewsActivity extends BaseActivity implements NewsListView {
@@ -26,7 +25,6 @@ public class NewsActivity extends BaseActivity implements NewsListView {
 
     private Intent intent;
     private String news;
-    private ArrayList<String> titles;
 
     @Override
     protected BaseViewModel<NewsListView> getViewModel() {
@@ -49,20 +47,13 @@ public class NewsActivity extends BaseActivity implements NewsListView {
 
     private void initView() {
 
-        intent = getIntent();
-        news = intent.getStringExtra("news");
-
-        ///////////////////Здесь split сделать и все загрузить в arrayList -- titles
-
         progressBar = findViewById(R.id.news_progress);
         listView = findViewById(R.id.news_list_view);
 
+        intent = getIntent();
+        news = intent.getStringExtra("news");
 
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(NewsActivity.this, android.R.layout.simple_list_item_1, titles);
-
-        listView.setAdapter(arrayAdapter);
-
+        newsActivityViewModel.showNews(news);
     }
 
     @Override
@@ -78,7 +69,11 @@ public class NewsActivity extends BaseActivity implements NewsListView {
     }
 
     @Override
-    public void showNewsList(List<String> list) {
+    public void showNewsList(ArrayList<String> result) {
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(NewsActivity.this, android.R.layout.simple_list_item_1, result);
+
+        listView.setAdapter(arrayAdapter);
     }
 
     @Override
