@@ -2,19 +2,22 @@ package com.example.myapplication.features.channels.data.Room;
 
 import com.example.myapplication.features.channels.domain.model.Channel;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.PrimaryKey;
 import androidx.room.Query;
 
 @Dao
 public interface ChannelDao {
 
     @Insert
-    void insertAll(Channel... channels);
+    Long[] insertAll(ArrayList<Channel> channelList);
 
     @Delete
     void delete(Channel channel);

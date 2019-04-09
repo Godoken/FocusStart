@@ -16,12 +16,11 @@ import androidx.work.Data;
 
 public class ChannelDataSourceIImpl implements ChannelsDataSource  {
 
-    private Data data;
     private List<Channel> channels = new ArrayList<>();
     private LiveData<List<Channel>> listLiveData;
 
     private LiveData<Channel> channelLiveData;
-    private Channel channel;
+
     @Override
     public void getChannels(Carry<List<Channel>> carry) {
 

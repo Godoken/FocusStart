@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class NewsActivityViewModel extends BaseViewModel<NewsListView> {
 
     private NewsInteractor interactor;
+    private String news;
 
     NewsActivityViewModel(){
         interactor = new NewsInteractorImpl();
@@ -17,9 +18,10 @@ public class NewsActivityViewModel extends BaseViewModel<NewsListView> {
 
     @Override
     protected void onViewReady() {
+        oshowNews();
     }
 
-    public void showNews(String news) {
+    public void oshowNews() {
         view.showProgress();
         interactor.convertToArrayList(news, new Carry<ArrayList<String>>() {
             @Override
@@ -34,5 +36,9 @@ public class NewsActivityViewModel extends BaseViewModel<NewsListView> {
                 view.showError(throwable.getMessage());
             }
         });
+    }
+
+    public void setNews(String news) {
+        this.news = news;
     }
 }

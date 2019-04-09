@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.features.BaseActivity;
 import com.example.myapplication.features.BaseViewModel;
@@ -14,8 +15,10 @@ import com.example.myapplication.features.InterfaceView;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.news.presentation.NewsActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.MainThread;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +49,18 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         setContentView(R.layout.channels_activity);
 
         initView();
+
+        /*//// hard-code test -- start
+        HardTest hardTest = new HardTest();
+
+        try {
+            hardTest.join(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        hardTest.start();
+        //// hard-code test -- end*/
     }
 
     private void initView() {
@@ -103,5 +118,22 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         Intent intent = new Intent(this, NewsActivity.class);
         intent.putExtra("news", news);
         startActivity(intent);
+    }
+
+    class HardTest extends Thread{
+
+        public void run(){
+
+            Channel channel;
+            ArrayList<Channel> channelArrayList = new ArrayList<>();
+
+            for (int i = 0; i < 10; i++){
+                channel = new Channel(1 + String.valueOf(i), 1 + String.valueOf(i), String.valueOf(i) + 1);
+                channelArrayList.add(channel);
+            }
+
+            App.getDataBase().getChannelDao().insertAll(channelArrayList);
+
+        }
     }
 }

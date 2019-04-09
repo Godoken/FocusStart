@@ -53,7 +53,7 @@ public class NewsActivity extends BaseActivity implements NewsListView {
         intent = getIntent();
         news = intent.getStringExtra("news");
 
-        newsActivityViewModel.showNews(news);
+        newsActivityViewModel.setNews(news);
     }
 
     @Override
