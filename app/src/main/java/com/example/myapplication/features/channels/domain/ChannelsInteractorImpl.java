@@ -45,6 +45,8 @@ public class ChannelsInteractorImpl implements ChannelsInteractor {
     @Override
     public void createChannel(Channel channel, Carry<Channel> carry) {
 
+        repository.createChannel(channel, carry);
+
     }
 
     @Override

@@ -17,4 +17,6 @@ interface ChannelListView extends InterfaceView {
 
     void showNews(String news);
 
+    void createChannel();
+
 }

@@ -42,7 +42,42 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         });
     }
 
-    public void onCreateChannelClicked() {
+    public void onCreateChannelActivityClicked() {
+
+        view.showProgress();
+        view.createChannel();
+        view.hideProgress();
+        /*interactor.createChannel(channel, new Carry<Channel>() {
+            @Override
+            public void onSuccess(Channel result) {
+                // Do toast
+                view.hideProgress();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                // Do toast
+                view.hideProgress();
+            }
+        });*/
+    }
+
+    public void onCreateChannelClicked(Channel channel) {
+
+        //view.showProgress();
+        interactor.createChannel(channel, new Carry<Channel>() {
+            @Override
+            public void onSuccess(Channel result) {
+                // Do toast
+                //view.hideProgress();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                // Do toast
+                //view.hideProgress();
+            }
+        });
     }
 
     public void onChannelSelected(Channel channel) {
@@ -53,6 +88,8 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
             @Override
             public void onSuccess(String result_news) {
                 view.hideProgress();
+
+                //Test
                 view.showNews(result_news);
                 // do something
             }

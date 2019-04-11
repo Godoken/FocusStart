@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.features.BaseActivity;
 import com.example.myapplication.features.BaseViewModel;
@@ -15,10 +14,9 @@ import com.example.myapplication.features.InterfaceView;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.news.presentation.NewsActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.MainThread;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -71,7 +69,7 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         createChannelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                channelActivityViewModel.onCreateChannelClicked();
+                channelActivityViewModel.onCreateChannelActivityClicked();
             }
         });
 
@@ -119,6 +117,15 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         intent.putExtra("news", news);
         startActivity(intent);
     }
+
+    @Override
+    public void createChannel() {
+        FragmentDialogCreateChannel fragmentDialogCreateChannel = new FragmentDialogCreateChannel();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentDialogCreateChannel.show(fragmentManager, "create_channel");
+    }
+
+
 
     /*class HardTest extends Thread{
 

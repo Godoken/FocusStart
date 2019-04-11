@@ -31,6 +31,8 @@ public class ChannelsRepositoryImpl implements ChannelsRepository {
     @Override
     public void createChannel(Channel channel, Carry<Channel> carry) {
 
+        channelsDataSource.createChannel(channel, carry);
+
     }
 
     @Override

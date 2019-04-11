@@ -20,6 +20,9 @@ public interface ChannelDao {
     @Insert
     Long[] insertAll(ArrayList<Channel> channelList);
 
+    @Insert
+    void insert(Channel channel);
+
     @Delete
     void delete(Channel channel);
 
@@ -30,7 +33,7 @@ public interface ChannelDao {
     List<Channel> getAllChannelsDead();
 
     @Query("SELECT * FROM channel WHERE url = :channelUrl")
-    LiveData<Channel> getChannelByUrl(String channelUrl);
+    Channel getChannelByUrl(String channelUrl);
 
     @Update
     void updateAllChannels(List<Channel> channelList);
