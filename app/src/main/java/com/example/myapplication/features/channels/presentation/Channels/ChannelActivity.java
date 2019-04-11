@@ -120,7 +120,7 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         startActivity(intent);
     }
 
-    class HardTest extends Thread{
+    /*class HardTest extends Thread{
 
         public void run(){
 
@@ -135,5 +135,5 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
             App.getDataBase().getChannelDao().insertAll(channelArrayList);
 
         }
-    }
+    }*/
 }

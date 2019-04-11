@@ -12,7 +12,8 @@ public interface ChannelsDataSource {
 
     void getChannel(String id, Carry<Channel> carry);
 
-    void createChannel(Channel book, Carry<Channel> carry);
+    void createChannel(Channel channel, Carry<Channel> carry);
 
     void deleteChannel(String id, Carry<Success> carry);
+
 }

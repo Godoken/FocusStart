@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/edit_text"
+    android:elevation="8dp"
+    android:orientation="vertical"
+    android:outlineSpotShadowColor="@android:color/background_light">
 
     <TextView
         android:id="@+id/channel_item_name"
         style="@style/Base.TextAppearance.AppCompat.Body2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="394dp"
+        android:layout_height="61dp"
+        android:elevation="4dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/channel_item_url"
         style="@style/Base.TextAppearance.AppCompat.Body1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="425dp"
+        android:layout_height="75dp"
+        android:elevation="4dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="14sp" />
 
 </LinearLayout>

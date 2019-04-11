@@ -12,6 +12,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface ChannelDao {
@@ -25,6 +26,12 @@ public interface ChannelDao {
     @Query("SELECT * FROM channel")
     LiveData<List<Channel>> getAllChannels();
 
+    @Query("SELECT * FROM channel")
+    List<Channel> getAllChannelsDead();
+
     @Query("SELECT * FROM channel WHERE url = :channelUrl")
     LiveData<Channel> getChannelByUrl(String channelUrl);
+
+    @Update
+    void updateAllChannels(List<Channel> channelList);
 }
