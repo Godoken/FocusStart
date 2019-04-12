@@ -14,5 +14,5 @@ public interface ChannelsRepository {
 
     void createChannel(Channel channel, Carry<Channel> carry);
 
-    void deleteChannel(String id, Carry<Success> carry);
+    void deleteChannel(Channel channel, Carry<Success> carry);
 }

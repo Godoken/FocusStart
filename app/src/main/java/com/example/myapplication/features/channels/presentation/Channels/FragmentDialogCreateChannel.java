@@ -41,6 +41,7 @@ public class FragmentDialogCreateChannel extends DialogFragment {
 
                     //url = edit_url.getText().toString();
                     url = "https://news.yandex.ru/Novosibirsk/index.rss";
+                    //url = "feed:https://news.yandex.ru/society.rss";
                     name = edit_name.getText().toString();
 
                     Channel channel = new Channel(name, "", url);

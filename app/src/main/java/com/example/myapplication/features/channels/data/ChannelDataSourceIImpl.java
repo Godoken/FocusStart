@@ -4,16 +4,15 @@ package com.example.myapplication.features.channels.data;
 import com.example.myapplication.App;
 import com.example.myapplication.exceptions.EmptyBodyException;
 import com.example.myapplication.features.channels.data.Network.WorkerNet;
-import com.example.myapplication.features.channels.data.Room.WorkerInsert;
+import com.example.myapplication.features.channels.data.Room.WorkerDeleteChannel;
+import com.example.myapplication.features.channels.data.Room.WorkerInsertChannel;
 import com.example.myapplication.features.channels.data.Room.WorkerQueryChannel;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
-import com.example.myapplication.features.channels.presentation.Channels.ChannelActivity;
 import com.example.myapplication.network.Carry;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -36,7 +35,7 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
     public void getChannels(Carry<List<Channel>> carry) {
 
         OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(WorkerNet.class)
-                .setInitialDelay(10, TimeUnit.SECONDS)
+                //.setInitialDelay(10, TimeUnit.SECONDS)
                 .build();
 
         WorkManager.getInstance().enqueue(oneTimeWorkRequest);
@@ -94,7 +93,11 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
 
                     carry.onSuccess(channel);
                 } else {
-                    carry.onFailure(new EmptyBodyException());
+
+                    if (workInfo.getState() == WorkInfo.State.FAILED){
+                        carry.onFailure(new EmptyBodyException());
+                    }
+                    //carry.onFailure(new EmptyBodyException());
                 }
             }
         });
@@ -123,7 +126,7 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
 
         data = new Data.Builder().putString("url", channel.getUrl()).putString("name", channel.getName()).build();
 
-        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(WorkerInsert.class).setInputData(data).build();
+        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(WorkerInsertChannel.class).setInputData(data).build();
 
         WorkManager.getInstance().enqueue(oneTimeWorkRequest);
 
@@ -141,7 +144,26 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
     }
 
     @Override
-    public void deleteChannel(String id, Carry<Success> carry) {
+    public void deleteChannel(Channel channel, Carry<Success> carry) {
 
+        data = new Data.Builder().putString("url", channel.getUrl()).putString("name", channel.getName()).build();
+
+        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(WorkerDeleteChannel.class).setInputData(data).build();
+
+        WorkManager.getInstance().enqueue(oneTimeWorkRequest);
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(oneTimeWorkRequest.getId()).observeForever(new Observer<WorkInfo>() {
+            @Override
+            public void onChanged(WorkInfo workInfo) {
+
+                if (workInfo.getState() == WorkInfo.State.SUCCEEDED){
+
+                    Success success = new Success();
+                    carry.onSuccess(success);
+                } else {
+                    carry.onFailure(new EmptyBodyException());
+                }
+            }
+        });
     }
 }

@@ -19,4 +19,5 @@ interface ChannelListView extends InterfaceView {
 
     void createChannel();
 
+    void deleteChannel(Channel channel);
 }

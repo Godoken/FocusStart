@@ -50,7 +50,8 @@ public class ChannelsInteractorImpl implements ChannelsInteractor {
     }
 
     @Override
-    public void deleteChannel(String url, Carry<Success> carry) {
+    public void deleteChannel(Channel channel, Carry<Success> carry) {
 
+        repository.deleteChannel(channel, carry);
     }
 }

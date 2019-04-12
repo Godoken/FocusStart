@@ -36,7 +36,9 @@ public class ChannelsRepositoryImpl implements ChannelsRepository {
     }
 
     @Override
-    public void deleteChannel(String id, Carry<Success> carry) {
+    public void deleteChannel(Channel channel, Carry<Success> carry) {
+
+        channelsDataSource.deleteChannel(channel, carry);
 
     }
 }

@@ -125,6 +125,14 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         fragmentDialogCreateChannel.show(fragmentManager, "create_channel");
     }
 
+    @Override
+    public void deleteChannel(Channel channel) {
+        FragmentDialogDeleteChannel fragmentDialogDeleteChannel = new FragmentDialogDeleteChannel();
+        fragmentDialogDeleteChannel.setChannel(channel);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentDialogDeleteChannel.show(fragmentManager, "delete_channel");
+    }
+
 
 
     /*class HardTest extends Thread{

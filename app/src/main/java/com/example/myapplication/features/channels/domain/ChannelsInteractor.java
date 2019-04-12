@@ -14,5 +14,5 @@ public interface ChannelsInteractor {
 
     void createChannel(Channel channel, Carry<Channel> carry);
 
-    void deleteChannel(String url, Carry<Success> carry);
+    void deleteChannel(Channel channel, Carry<Success> carry);
 }

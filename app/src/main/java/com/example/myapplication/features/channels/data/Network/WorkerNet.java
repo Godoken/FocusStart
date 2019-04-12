@@ -69,7 +69,7 @@ public class WorkerNet extends Worker {
 
                                 if (insideItem){
                                     //titles.add(xmlPullParser.nextText());
-                                    titles = titles.concat(xmlPullParser.nextText() + ",");
+                                    titles = titles.concat(xmlPullParser.nextText() + ";");
                                 }
                             }
                             else {

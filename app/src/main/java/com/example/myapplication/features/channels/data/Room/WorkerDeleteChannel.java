@@ -7,11 +7,10 @@ import com.example.myapplication.features.channels.domain.model.Channel;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
-import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-public class WorkerInsert extends Worker {
+public class WorkerDeleteChannel extends Worker {
 
     Data data;
 
@@ -20,7 +19,8 @@ public class WorkerInsert extends Worker {
 
     Channel channel;
 
-    public WorkerInsert(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+
+    public WorkerDeleteChannel(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -35,8 +35,9 @@ public class WorkerInsert extends Worker {
 
         channel = new Channel(name, "", url);
 
-        App.getDataBase().getChannelDao().insert(channel);
+        App.getDataBase().getChannelDao().delete(channel);
 
         return Result.success();
+
     }
 }

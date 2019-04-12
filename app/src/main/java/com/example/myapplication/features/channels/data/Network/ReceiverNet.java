@@ -19,8 +19,8 @@ public class ReceiverNet extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(WorkerNet.class, 10, TimeUnit.MINUTES,
-                1, TimeUnit.MINUTES).build();
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(WorkerNet.class, 15, TimeUnit.MINUTES,
+                16, TimeUnit.MINUTES).build();
 
         WorkManager.getInstance().enqueue(periodicWorkRequest);
     }
