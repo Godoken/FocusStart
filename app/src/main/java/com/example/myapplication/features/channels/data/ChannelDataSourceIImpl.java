@@ -68,6 +68,8 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
                 .setInputData(data)
                 .build();
 
+
+
         WorkManager.getInstance().enqueue(oneTimeWorkRequest);
 
         WorkManager.getInstance().getWorkInfoByIdLiveData(oneTimeWorkRequest.getId()).observeForever(new Observer<WorkInfo>() {
@@ -135,6 +137,10 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
             public void onChanged(WorkInfo workInfo) {
 
                 if (workInfo.getState() == WorkInfo.State.SUCCEEDED){
+
+                    OneTimeWorkRequest oneTimeWorkRequest1 = new OneTimeWorkRequest.Builder(WorkerNet.class).build();
+                    WorkManager.getInstance().enqueue(oneTimeWorkRequest1);
+
                     carry.onSuccess(channel);
                 } else {
                     carry.onFailure(new EmptyBodyException());
