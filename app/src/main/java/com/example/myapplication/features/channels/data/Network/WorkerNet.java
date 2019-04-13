@@ -102,6 +102,7 @@ public class WorkerNet extends Worker {
                 exception = e;
             }
             channelList.get(i).setNews(titles);
+            titles = "";
         }
 
         if (exception != null){
