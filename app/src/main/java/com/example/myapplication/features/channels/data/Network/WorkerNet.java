@@ -30,7 +30,6 @@ public class WorkerNet extends Worker {
     @Override
     public Result doWork() {
 
-        //ArrayList<String> titles = new ArrayList<>();
         String titles = "";
         ArrayList<String> links = new ArrayList<>();
 

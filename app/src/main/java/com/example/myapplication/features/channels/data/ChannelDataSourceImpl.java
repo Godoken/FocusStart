@@ -22,7 +22,7 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 
-public class ChannelDataSourceIImpl implements ChannelsDataSource  {
+public class ChannelDataSourceImpl implements ChannelsDataSource  {
 
     private List<Channel> channels = new ArrayList<>();
     private LiveData<List<Channel>> listLiveData;
@@ -99,26 +99,9 @@ public class ChannelDataSourceIImpl implements ChannelsDataSource  {
                     if (workInfo.getState() == WorkInfo.State.FAILED){
                         carry.onFailure(new EmptyBodyException());
                     }
-                    //carry.onFailure(new EmptyBodyException());
                 }
             }
         });
-
-        /*channelLiveData = App.getDataBase().getChannelDao().getChannelByUrl(url);
-
-        Observer<Channel> observer = new Observer<Channel>() {
-            @Override
-            public void onChanged(Channel channel) {
-                if (channelLiveData != null){
-                    channel = channelLiveData.getValue();
-                    carry.onSuccess(channel);
-                } else {
-                    carry.onFailure(new EmptyBodyException());
-                }
-            }
-        };
-        channelLiveData.observeForever(observer);
-        //channelLiveData.removeObserver(observer);*/
     }
 
     @Override

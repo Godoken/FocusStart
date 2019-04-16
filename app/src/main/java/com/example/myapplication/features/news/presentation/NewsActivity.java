@@ -28,7 +28,7 @@ public class NewsActivity extends BaseActivity implements NewsListView {
 
     @Override
     protected BaseViewModel<NewsListView> getViewModel() {
-        newsActivityViewModel = new NewsActivityViewModel();
+        newsActivityViewModel = ViewModelFactory.createNewsActivityViewModel();
         return newsActivityViewModel;
     }
 

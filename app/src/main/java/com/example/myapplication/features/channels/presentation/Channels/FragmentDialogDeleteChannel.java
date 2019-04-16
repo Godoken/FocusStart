@@ -31,7 +31,7 @@ public class FragmentDialogDeleteChannel extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                ChannelActivityViewModel channelActivityViewModel = new ChannelActivityViewModel();
+                ChannelActivityViewModel channelActivityViewModel = ViewModelFactory.createViewModel();
                 channelActivityViewModel.onDeleteChannelClicked(channel);
                 dismiss();
             }

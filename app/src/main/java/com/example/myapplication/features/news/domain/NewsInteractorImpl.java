@@ -19,7 +19,6 @@ public class NewsInteractorImpl implements NewsInteractor {
 
         news_array = news.split(";");
         stringArrayList.addAll(Arrays.asList(news_array));
-        //stringArrayList = new ArrayList<>(Arrays.asList(news_array));
 
         if (stringArrayList != null){
             carry.onSuccess(stringArrayList);

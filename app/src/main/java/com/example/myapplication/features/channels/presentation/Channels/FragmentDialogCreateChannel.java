@@ -2,7 +2,6 @@ package com.example.myapplication.features.channels.presentation.Channels;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +36,12 @@ public class FragmentDialogCreateChannel extends DialogFragment {
 
                 if ((!edit_name.getText().toString().equals("")) | (!edit_url.getText().toString().equals(""))){
 
-                    ChannelActivityViewModel channelActivityViewModel = new ChannelActivityViewModel();
+                    ChannelActivityViewModel channelActivityViewModel = ViewModelFactory.createViewModel();
 
-                    //url = edit_url.getText().toString();
+                    url = edit_url.getText().toString();
                     //url = "https://lenta.ru/rss/news.rss";
                     //url = "https://news.yandex.ru/Novosibirsk/index.rss";
-                    url = "https://news.yandex.ru/society.rss";
+                    //url = "https://news.yandex.ru/society.rss";
                     name = edit_name.getText().toString();
 
                     Channel channel = new Channel(name, "", url);

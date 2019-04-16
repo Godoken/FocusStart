@@ -11,8 +11,8 @@ public class ChannelsRepositoryImpl implements ChannelsRepository {
 
     private final ChannelsDataSource channelsDataSource;
 
-    public ChannelsRepositoryImpl(){
-        channelsDataSource = new ChannelDataSourceIImpl();
+    public ChannelsRepositoryImpl(ChannelsDataSource channelsDataSource){
+        this.channelsDataSource = channelsDataSource;
     }
     @Override
     public void loadChannels(Carry<List<Channel>> carry) {

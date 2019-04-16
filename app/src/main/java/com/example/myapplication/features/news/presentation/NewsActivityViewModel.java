@@ -12,8 +12,8 @@ public class NewsActivityViewModel extends BaseViewModel<NewsListView> {
     private NewsInteractor interactor;
     private String news;
 
-    NewsActivityViewModel(){
-        interactor = new NewsInteractorImpl();
+    NewsActivityViewModel(NewsInteractor interactor){
+        this.interactor = interactor;
     }
 
     @Override

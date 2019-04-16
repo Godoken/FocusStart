@@ -15,8 +15,8 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
 
     private final ChannelsInteractor interactor;
 
-    ChannelActivityViewModel(){
-        interactor = new ChannelsInteractorImpl();
+    ChannelActivityViewModel(ChannelsInteractor interactor){
+        this.interactor = interactor;
     }
 
     @Override

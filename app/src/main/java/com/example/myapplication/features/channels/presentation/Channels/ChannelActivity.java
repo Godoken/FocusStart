@@ -32,7 +32,7 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
 
     @Override
     protected BaseViewModel<ChannelListView> getViewModel() {
-        channelActivityViewModel = new ChannelActivityViewModel();
+        channelActivityViewModel = ViewModelFactory.createViewModel();
         return channelActivityViewModel;
     }
 
@@ -47,18 +47,6 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         setContentView(R.layout.channels_activity);
 
         initView();
-
-        /*//// hard-code test -- start
-        HardTest hardTest = new HardTest();
-
-        try {
-            hardTest.join(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        hardTest.start();
-        //// hard-code test -- end*/
     }
 
     private void initView() {
@@ -132,23 +120,4 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentDialogDeleteChannel.show(fragmentManager, "delete_channel");
     }
-
-
-
-    /*class HardTest extends Thread{
-
-        public void run(){
-
-            Channel channel;
-            ArrayList<Channel> channelArrayList = new ArrayList<>();
-
-            for (int i = 0; i < 10; i++){
-                channel = new Channel(1 + String.valueOf(i), 1 + String.valueOf(i), String.valueOf(i) + 1);
-                channelArrayList.add(channel);
-            }
-
-            App.getDataBase().getChannelDao().insertAll(channelArrayList);
-
-        }
-    }*/
 }

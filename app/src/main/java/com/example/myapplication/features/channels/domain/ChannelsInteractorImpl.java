@@ -14,8 +14,8 @@ public class ChannelsInteractorImpl implements ChannelsInteractor {
 
     private String channel_news;
 
-    public ChannelsInteractorImpl() {
-        repository = new ChannelsRepositoryImpl();
+    public ChannelsInteractorImpl(ChannelsRepository repository) {
+        this.repository = repository;
     }
 
     @Override
