@@ -48,19 +48,6 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         view.showProgress();
         view.createChannel();
         view.hideProgress();
-        /*interactor.createChannel(channel, new Carry<Channel>() {
-            @Override
-            public void onSuccess(Channel result) {
-                // Do toast
-                view.hideProgress();
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                // Do toast
-                view.hideProgress();
-            }
-        });*/
     }
 
     public void onCreateChannelClicked(Channel channel) {
@@ -126,4 +113,10 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         });
     }
 
+    public void onSettingsAppActivityClicked() {
+        view.showProgress();
+        view.startAppSettings();
+        view.hideProgress();
+
+    }
 }

@@ -13,6 +13,7 @@ import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.InterfaceView;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.news.presentation.NewsActivity;
+import com.example.myapplication.features.settings.presentation.SettingsActivity;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private Button createChannelButton;
+    private Button settingsAppButton;
     private ChannelAdapter adapter;
 
     private ChannelActivityViewModel channelActivityViewModel;
@@ -53,11 +55,19 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         progressBar = findViewById(R.id.channels_progress);
         recyclerView = findViewById(R.id.channels_recycle_view);
         createChannelButton = findViewById(R.id.create_channel);
+        settingsAppButton = findViewById(R.id.settings_button);
 
         createChannelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 channelActivityViewModel.onCreateChannelActivityClicked();
+            }
+        });
+
+        settingsAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                channelActivityViewModel.onSettingsAppActivityClicked();
             }
         });
 
@@ -119,5 +129,11 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
         fragmentDialogDeleteChannel.setChannel(channel);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentDialogDeleteChannel.show(fragmentManager, "delete_channel");
+    }
+
+    @Override
+    public void startAppSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }
