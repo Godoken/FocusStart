@@ -12,5 +12,5 @@ public interface SettingsListView extends InterfaceView {
 
     void showError(String message);
 
-    void showSettings(ArrayList<String> arrayList);
+    void showSettings(String setting);
 }

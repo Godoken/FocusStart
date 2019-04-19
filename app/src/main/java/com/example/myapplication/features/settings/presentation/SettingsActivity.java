@@ -3,6 +3,7 @@ package com.example.myapplication.features.settings.presentation;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -10,8 +11,6 @@ import com.example.myapplication.R;
 import com.example.myapplication.features.BaseActivity;
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.InterfaceView;
-
-import java.util.ArrayList;
 
 public class SettingsActivity extends BaseActivity implements SettingsListView {
 
@@ -49,6 +48,33 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
         checkBox1 = findViewById(R.id.checkBox1);
         checkBox1 = findViewById(R.id.checkBox2);
         checkBox1 = findViewById(R.id.checkBox3);
+
+        checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                settingsActivityViewModel.onSettingsChanged("30");
+
+            }
+        });
+
+        checkBox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                settingsActivityViewModel.onSettingsChanged("2");
+
+            }
+        });
+
+        checkBox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                settingsActivityViewModel.onSettingsChanged("6");
+
+            }
+        });
     }
 
     @Override
@@ -67,7 +93,38 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
     }
 
     @Override
-    public void showSettings(ArrayList<String> arrayList) {
+    public void showSettings(String setting) {
+
         // Working with UI
+
+        switch (setting){
+
+            case "30":
+                checkBox1.setChecked(true);
+                //
+                checkBox2.setChecked(false);
+                checkBox3.setChecked(false);
+                break;
+
+            case "2":
+                checkBox2.setChecked(true);
+                //
+                checkBox1.setChecked(false);
+                checkBox3.setChecked(false);
+                break;
+
+            case "6":
+                checkBox3.setChecked(true);
+                //
+                checkBox1.setChecked(false);
+                checkBox2.setChecked(false);
+                break;
+
+            case "":
+                checkBox1.setChecked(false);
+                checkBox2.setChecked(false);
+                checkBox3.setChecked(false);
+                break;
+        }
     }
 }

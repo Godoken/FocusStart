@@ -3,9 +3,9 @@ package com.example.myapplication.features.settings.domain;
 import com.example.myapplication.features.channels.domain.model.Success;
 import com.example.myapplication.network.Carry;
 
-public interface SettingsInteractor {
+public interface SettingsRepository {
 
-    void getAppSettings(Carry<String> carry);
+    void getSettings(Carry<String> carry);
 
-    void setAppSettings(String settings, Carry<Success> carry);
+    void setSettings(String settings, Carry<Success> carry);
 }
