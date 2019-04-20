@@ -21,6 +21,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
     private CheckBox checkBox1;
     private CheckBox checkBox2;
     private CheckBox checkBox3;
+    private CheckBox checkBox4;
 
     @Override
     protected BaseViewModel<SettingsListView> getViewModel() {
@@ -46,14 +47,19 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
         progressBar = findViewById(R.id.settings_progress);
 
         checkBox1 = findViewById(R.id.checkBox1);
-        checkBox1 = findViewById(R.id.checkBox2);
-        checkBox1 = findViewById(R.id.checkBox3);
+        checkBox2 = findViewById(R.id.checkBox2);
+        checkBox3 = findViewById(R.id.checkBox3);
+        checkBox4 = findViewById(R.id.checkBox4);
 
         checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                settingsActivityViewModel.onSettingsChanged("30");
+                if (isChecked){
+                    settingsActivityViewModel.onSettingsChanged("30");
+                } else {
+                    settingsActivityViewModel.onSettingsChanged("0");
+                }
 
             }
         });
@@ -62,7 +68,11 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                settingsActivityViewModel.onSettingsChanged("2");
+                if (isChecked){
+                    settingsActivityViewModel.onSettingsChanged("120");
+                } else {
+                   settingsActivityViewModel.onSettingsChanged("0");
+                }
 
             }
         });
@@ -71,7 +81,23 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                settingsActivityViewModel.onSettingsChanged("6");
+                if (isChecked){
+                    settingsActivityViewModel.onSettingsChanged("360");
+                } else {
+                    settingsActivityViewModel.onSettingsChanged("0");
+                }
+
+            }
+        });
+
+        checkBox4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked){
+                    settingsActivityViewModel.onSettingsChanged("0");
+                } else {
+                }
 
             }
         });
@@ -95,32 +121,31 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
     @Override
     public void showSettings(String setting) {
 
-        // Working with UI
-
         switch (setting){
 
             case "30":
                 checkBox1.setChecked(true);
-                //
                 checkBox2.setChecked(false);
                 checkBox3.setChecked(false);
+                checkBox4.setChecked(false);
                 break;
 
-            case "2":
+            case "120":
                 checkBox2.setChecked(true);
-                //
                 checkBox1.setChecked(false);
                 checkBox3.setChecked(false);
+                checkBox4.setChecked(false);
                 break;
 
-            case "6":
+            case "360":
                 checkBox3.setChecked(true);
-                //
                 checkBox1.setChecked(false);
                 checkBox2.setChecked(false);
+                checkBox4.setChecked(false);
                 break;
 
-            case "":
+            case "0":
+                checkBox4.setChecked(true);
                 checkBox1.setChecked(false);
                 checkBox2.setChecked(false);
                 checkBox3.setChecked(false);

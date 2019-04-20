@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".features.news.presentation.NewsActivity" />
+        <activity android:name=".features.settings.presentation.SettingsActivity" />
 
     </application>
 

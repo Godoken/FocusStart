@@ -20,7 +20,7 @@ public class SettingDataSourceImpl implements SettingsDataSource {
     public void getSettingsPreferences(Carry<String> settings) {
 
         if (sharedPreferences.contains(settings_key)){
-            settings.onSuccess(sharedPreferences.getString(settings_key,  ""));
+            settings.onSuccess(sharedPreferences.getString(settings_key,  "0"));
         } else {
             settings.onFailure(new EmptyBodyException());
         }
