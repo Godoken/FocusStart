@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:outlineSpotShadowColor="@android:color/background_light">
 
     <TextView
         android:id="@+id/text_settings"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:elevation="8dp"
         android:text="Выберите периодичность обновления новостей"
-        android:textSize="18sp" />
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <ProgressBar
         android:id="@+id/settings_progress"
@@ -26,6 +29,7 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:elevation="8dp"
             android:text="30 мин." />
 
         <CheckBox
@@ -33,6 +37,7 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:elevation="8dp"
             android:text="2 ч." />
 
         <CheckBox
@@ -40,6 +45,7 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:elevation="8dp"
             android:text="6 ч." />
 
         <CheckBox
@@ -47,6 +53,7 @@
             android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:elevation="8dp"
             android:text="Никогда" />
     </LinearLayout>
 </LinearLayout>
