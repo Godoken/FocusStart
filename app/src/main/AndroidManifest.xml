@@ -19,8 +19,164 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="https"
+                android:host="news.yandex.ru"
+                android:pathPrefix="/daily.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/auto.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/martial_arts.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/auto_racing.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/army.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/basketball.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/world.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/gadgets.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/index.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/communal.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/health.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/games.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/internet.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/movies.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/cosmos.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/culture.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/fire.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/music.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/showbusiness.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/hockey.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/football.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/finances.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/vehicle.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/computers.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/tennis.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/theaters.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/sport.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/religion.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/travels.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/incident.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/politics.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/society.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/science.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/ecology.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/business.rss"/>
+
+                <data android:scheme="https"
+                    android:host="news.yandex.ru"
+                    android:pathPrefix="/energy.rss"/>
+
+            </intent-filter>
+
         </activity>
-        <activity android:name=".features.news.presentation.NewsActivity" />
+
+        <activity android:name=".features.news.presentation.NewsActivity">
+
+        </activity>
         <activity android:name=".features.settings.presentation.SettingsActivity" />
 
     </application>

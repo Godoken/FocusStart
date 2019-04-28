@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.data.Room;
+package com.example.myapplication.features.channels.data.room;
 
 import android.content.Context;
 
@@ -10,17 +10,18 @@ import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-public class WorkerDeleteChannel extends Worker {
+public class WorkerQueryChannel extends Worker {
 
     Data data;
 
     String url;
     String name;
+    String news;
 
     Channel channel;
 
 
-    public WorkerDeleteChannel(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public WorkerQueryChannel(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -29,15 +30,15 @@ public class WorkerDeleteChannel extends Worker {
     public Result doWork() {
 
         data = getInputData();
-
         url = data.getString("url");
-        name = data.getString("name");
 
-        channel = new Channel(name, "", url);
+        channel = App.getDataBase().getChannelDao().getChannelByUrl(url);
 
-        App.getDataBase().getChannelDao().delete(channel);
+        name = channel.getName();
+        news = channel.getNews();
 
-        return Result.success();
+        data =  new Data.Builder().putString("url", url).putString("name", name).putString("news", news).build();
 
+        return Result.success(data);
     }
 }

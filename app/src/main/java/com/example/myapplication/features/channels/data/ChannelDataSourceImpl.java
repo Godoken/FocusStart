@@ -3,10 +3,10 @@ package com.example.myapplication.features.channels.data;
 
 import com.example.myapplication.App;
 import com.example.myapplication.exceptions.EmptyBodyException;
-import com.example.myapplication.features.channels.data.Network.WorkerNet;
-import com.example.myapplication.features.channels.data.Room.WorkerDeleteChannel;
-import com.example.myapplication.features.channels.data.Room.WorkerInsertChannel;
-import com.example.myapplication.features.channels.data.Room.WorkerQueryChannel;
+import com.example.myapplication.features.channels.data.network.WorkerNet;
+import com.example.myapplication.features.channels.data.room.WorkerDeleteChannel;
+import com.example.myapplication.features.channels.data.room.WorkerInsertChannel;
+import com.example.myapplication.features.channels.data.room.WorkerQueryChannel;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
 import com.example.myapplication.network.Carry;
@@ -29,7 +29,7 @@ public class ChannelDataSourceImpl implements ChannelsDataSource  {
 
     private LiveData<Channel> channelLiveData;
 
-    Data data;
+    private Data data;
 
     @Override
     public void getChannels(Carry<List<Channel>> carry) {

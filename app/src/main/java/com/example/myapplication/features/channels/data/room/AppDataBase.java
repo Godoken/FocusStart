@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.data.Room;
+package com.example.myapplication.features.channels.data.room;
 
 import com.example.myapplication.features.channels.domain.model.Channel;
 

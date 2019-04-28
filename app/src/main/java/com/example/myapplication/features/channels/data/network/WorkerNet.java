@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.data.Network;
+package com.example.myapplication.features.channels.data.network;
 
 import android.content.Context;
 

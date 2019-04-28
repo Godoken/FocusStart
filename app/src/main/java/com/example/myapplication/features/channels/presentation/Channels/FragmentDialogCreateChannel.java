@@ -15,12 +15,12 @@ import androidx.fragment.app.DialogFragment;
 
 public class FragmentDialogCreateChannel extends DialogFragment {
 
-    EditText edit_url;
-    EditText edit_name;
-    Button create_button;
+    private EditText edit_url;
+    private EditText edit_name;
+    private Button create_button;
 
-    String url;
-    String name;
+    private String url;
+    private String name;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
@@ -29,6 +29,12 @@ public class FragmentDialogCreateChannel extends DialogFragment {
         edit_url = v.findViewById(R.id.dialog_url);
         edit_name = v.findViewById(R.id.dialog_name);
         create_button = v.findViewById(R.id.create);
+
+        /*if (url != null){
+
+            edit_url.setText(url);
+            edit_name.setText(url.substring(url.lastIndexOf("/")));
+        }*/
 
         create_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,13 +45,11 @@ public class FragmentDialogCreateChannel extends DialogFragment {
                     ChannelActivityViewModel channelActivityViewModel = ViewModelFactory.createViewModel();
 
                     url = edit_url.getText().toString();
-                    //url = "https://lenta.ru/rss/news.rss";
                     //url = "https://news.yandex.ru/Novosibirsk/index.rss";
                     //url = "https://news.yandex.ru/society.rss";
                     name = edit_name.getText().toString();
 
                     Channel channel = new Channel(name, "", url);
-
                     channelActivityViewModel.onCreateChannelClicked(channel);
                 } else {
 
@@ -55,6 +59,10 @@ public class FragmentDialogCreateChannel extends DialogFragment {
             }
         });
         return v;
+    }
+
+    public void setUrl(String url){
+        this.url = url;
     }
 
 

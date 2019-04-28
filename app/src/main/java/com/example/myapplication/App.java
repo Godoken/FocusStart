@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.example.myapplication.features.channels.data.Network.WorkerNet;
-import com.example.myapplication.features.channels.data.Room.AppDataBase;
+import com.example.myapplication.features.channels.data.network.WorkerNet;
+import com.example.myapplication.features.channels.data.room.AppDataBase;
 
 import java.util.concurrent.TimeUnit;
 

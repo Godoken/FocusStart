@@ -32,9 +32,21 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
 
     private ChannelActivityViewModel channelActivityViewModel;
 
+    private Intent intent;
+    private String action;
+    private String data;
+
     @Override
     protected BaseViewModel<ChannelListView> getViewModel() {
+
+        intent = getIntent();
+        action = intent.getAction();
+        data = intent.getDataString();
+
         channelActivityViewModel = ViewModelFactory.createViewModel();
+        channelActivityViewModel.setAction(action);
+        channelActivityViewModel.setUrl(data);
+
         return channelActivityViewModel;
     }
 

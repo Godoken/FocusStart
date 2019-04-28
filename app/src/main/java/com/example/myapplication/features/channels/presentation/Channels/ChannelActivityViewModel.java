@@ -1,5 +1,7 @@
 package com.example.myapplication.features.channels.presentation.Channels;
 
+import android.content.Intent;
+
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.channels.domain.ChannelsInteractor;
 import com.example.myapplication.features.channels.domain.ChannelsInteractorImpl;
@@ -14,6 +16,8 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
 
 
     private final ChannelsInteractor interactor;
+    private String action;
+    private String url;
 
     ChannelActivityViewModel(ChannelsInteractor interactor){
         this.interactor = interactor;
@@ -21,17 +25,54 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
 
     @Override
     protected void onViewReady() {
-        loadChannels();
+        checkDeepLink(new Carry<Success>() {
+            @Override
+            public void onSuccess(Success result) {
+                loadChannels();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+            }
+        });
     }
 
+    public void checkDeepLink(Carry<Success> carry){
+         if (Intent.ACTION_VIEW.equals(action) && url != null){
+             Channel channel = new Channel(url.substring(url.lastIndexOf("/")), "", url);
+             action = null;
+             url = null;
+             interactor.createChannel(channel, new Carry<Channel>() {
+                 @Override
+                 public void onSuccess(Channel result) {
+                     //
+                     carry.onSuccess(new Success());
+                 }
+
+                 @Override
+                 public void onFailure(Throwable throwable) {
+                    //
+                 }
+             });
+         } else {
+             carry.onSuccess(new Success());
+         }
+     }
+
     public void loadChannels(){
+
         view.showProgress();
         interactor.loadChannels(new Carry<List<Channel>>() {
 
             @Override
             public void onSuccess(List<Channel> result) {
-                view.showChannelList(result);
-                view.hideProgress();
+
+                if (view != null){
+
+                    view.showChannelList(result);
+                    view.hideProgress();
+                }
             }
 
             @Override
@@ -118,5 +159,13 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         view.startAppSettings();
         view.hideProgress();
 
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
