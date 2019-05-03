@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Мое приложение</string>
+    <string name="create_channel">Добавить канал</string>
+    <string name="settings">НАСТРОЙКИ</string>
+    <string name="url">URL</string>
+    <string name="name">Имя</string>
+    <string name="create">Добавить</string>
+    <string name="question_delete">Вы действительно хотите удалить выбранный канал?</string>
+    <string name="delete">Удалить</string>
+    <string name="_30">30 мин.</string>
+    <string name="_2">2 ч.</string>
+    <string name="_6">6 ч.</string>
+    <string name="never">Никогда</string>
+    <string name="update_news">Выберите периодичность обновления новостей</string>
+</resources>
