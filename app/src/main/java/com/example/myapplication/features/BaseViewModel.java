@@ -1,8 +1,5 @@
 package com.example.myapplication.features;
 
-import com.example.myapplication.features.channels.domain.model.Success;
-import com.example.myapplication.network.Carry;
-
 public class BaseViewModel <View extends InterfaceView> {
 
     protected View view;

@@ -26,16 +26,12 @@ public class ChannelDataSourceImpl implements ChannelsDataSource  {
 
     private List<Channel> channels = new ArrayList<>();
     private LiveData<List<Channel>> listLiveData;
-
-    private LiveData<Channel> channelLiveData;
-
     private Data data;
 
     @Override
     public void getChannels(Carry<List<Channel>> carry) {
 
         OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(WorkerNet.class)
-                //.setInitialDelay(10, TimeUnit.SECONDS)
                 .build();
 
         WorkManager.getInstance().enqueue(oneTimeWorkRequest);

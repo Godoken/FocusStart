@@ -2,7 +2,6 @@ package com.example.myapplication.features.news.presentation;
 
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.news.domain.NewsInteractor;
-import com.example.myapplication.features.news.domain.NewsInteractorImpl;
 import com.example.myapplication.network.Carry;
 
 import java.util.ArrayList;

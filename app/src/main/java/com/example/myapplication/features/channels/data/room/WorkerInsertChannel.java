@@ -12,12 +12,10 @@ import androidx.work.WorkerParameters;
 
 public class WorkerInsertChannel extends Worker {
 
-    Data data;
-
-    String url;
-    String name;
-
-    Channel channel;
+    private Data data;
+    private String url;
+    private String name;
+    private Channel channel;
 
     public WorkerInsertChannel(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -28,12 +26,9 @@ public class WorkerInsertChannel extends Worker {
     public Result doWork() {
 
         data = getInputData();
-
         url = data.getString("url");
         name = data.getString("name");
-
         channel = new Channel(name, "", url);
-
         App.getDataBase().getChannelDao().insert(channel);
 
         return Result.success();

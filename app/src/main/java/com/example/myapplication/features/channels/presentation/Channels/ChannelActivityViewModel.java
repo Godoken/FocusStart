@@ -4,7 +4,6 @@ import android.content.Intent;
 
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.channels.domain.ChannelsInteractor;
-import com.example.myapplication.features.channels.domain.ChannelsInteractorImpl;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
 import com.example.myapplication.network.Carry;
@@ -38,7 +37,7 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         });
     }
 
-    public void checkDeepLink(Carry<Success> carry){
+    private void checkDeepLink(Carry<Success> carry){
          if (Intent.ACTION_VIEW.equals(action) && url != null){
              Channel channel = new Channel(url.substring(url.lastIndexOf("/")), "", url);
              action = null;
@@ -60,7 +59,7 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
          }
      }
 
-    public void loadChannels(){
+    private void loadChannels(){
 
         view.showProgress();
         interactor.loadChannels(new Carry<List<Channel>>() {

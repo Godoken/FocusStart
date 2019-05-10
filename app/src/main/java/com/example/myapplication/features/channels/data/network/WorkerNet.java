@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -31,7 +30,6 @@ public class WorkerNet extends Worker {
     public Result doWork() {
 
         String titles = "";
-        ArrayList<String> links = new ArrayList<>();
 
         String address;
         Exception exception = null;
@@ -60,14 +58,13 @@ public class WorkerNet extends Worker {
 
                     if (eventType == XmlPullParser.START_TAG){
 
-                        if (xmlPullParser.getName().equalsIgnoreCase("item")){
+                        if (xmlPullParser.getName().equalsIgnoreCase("item" ) | (xmlPullParser.getName().equalsIgnoreCase("entry"))){
                             insideItem = true;
                         } else {
 
                             if (xmlPullParser.getName().equalsIgnoreCase("title")){
 
                                 if (insideItem){
-                                    //titles.add(xmlPullParser.nextText());
                                     titles = titles.concat(xmlPullParser.nextText() + ";");
                                 }
                             }
@@ -76,7 +73,6 @@ public class WorkerNet extends Worker {
                                 if (xmlPullParser.getName().equalsIgnoreCase("link")){
 
                                     if (insideItem){
-                                        links.add(xmlPullParser.nextText());
                                     }
                                 }
                             }

@@ -11,7 +11,6 @@ import java.util.List;
 public class ChannelsInteractorImpl implements ChannelsInteractor {
 
     private final ChannelsRepository repository;
-
     private String channel_news;
 
     public ChannelsInteractorImpl(ChannelsRepository repository) {

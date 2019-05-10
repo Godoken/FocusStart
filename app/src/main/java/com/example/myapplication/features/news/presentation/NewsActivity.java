@@ -26,9 +26,6 @@ public class NewsActivity extends BaseActivity implements NewsListView {
     private Intent intent;
     private String news;
 
-    private String action;
-    private String data;
-
     @Override
     protected BaseViewModel<NewsListView> getViewModel() {
         newsActivityViewModel = ViewModelFactory.createNewsActivityViewModel();
@@ -54,18 +51,6 @@ public class NewsActivity extends BaseActivity implements NewsListView {
         listView = findViewById(R.id.news_list_view);
 
         intent = getIntent();
-        //action = intent.getAction();
-        //data = intent.getDataString();
-
-        /*if (Intent.ACTION_VIEW.equals(action) && data != null){
-
-
-
-        } else {
-            news = intent.getStringExtra("news");
-            newsActivityViewModel.setNews(news);
-        }*/
-
 
         news = intent.getStringExtra("news");
         newsActivityViewModel.setNews(news);

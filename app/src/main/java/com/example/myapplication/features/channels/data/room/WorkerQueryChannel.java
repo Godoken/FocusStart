@@ -12,14 +12,11 @@ import androidx.work.WorkerParameters;
 
 public class WorkerQueryChannel extends Worker {
 
-    Data data;
-
-    String url;
-    String name;
-    String news;
-
-    Channel channel;
-
+    private Data data;
+    private String url;
+    private String name;
+    private String news;
+    private Channel channel;
 
     public WorkerQueryChannel(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -31,12 +28,9 @@ public class WorkerQueryChannel extends Worker {
 
         data = getInputData();
         url = data.getString("url");
-
         channel = App.getDataBase().getChannelDao().getChannelByUrl(url);
-
         name = channel.getName();
         news = channel.getNews();
-
         data =  new Data.Builder().putString("url", url).putString("name", name).putString("news", news).build();
 
         return Result.success(data);

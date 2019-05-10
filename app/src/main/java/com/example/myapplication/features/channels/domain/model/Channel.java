@@ -1,7 +1,5 @@
 package com.example.myapplication.features.channels.domain.model;
 
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
