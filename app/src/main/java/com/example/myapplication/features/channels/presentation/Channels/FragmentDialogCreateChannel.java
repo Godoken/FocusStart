@@ -18,17 +18,21 @@ public class FragmentDialogCreateChannel extends DialogFragment {
     private EditText edit_url;
     private EditText edit_name;
     private Button create_button;
+    private Button cancel_create_button;
 
     private String url;
     private String name;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
+        setRetainInstance(true);
+
         View v = inflater.inflate(R.layout.fragment_dialog_create_channel, null);
 
         edit_url = v.findViewById(R.id.dialog_url);
         edit_name = v.findViewById(R.id.dialog_name);
         create_button = v.findViewById(R.id.create);
+        cancel_create_button = v.findViewById(R.id.cancel_create);
 
         create_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +54,14 @@ public class FragmentDialogCreateChannel extends DialogFragment {
                 dismiss();
             }
         });
+
+        cancel_create_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
         return v;
     }
 
@@ -67,6 +79,10 @@ public class FragmentDialogCreateChannel extends DialogFragment {
     }
 
     public void onDestroyView() {
+
+        if (getDialog() != null && getRetainInstance())
+            getDialog().setDismissMessage(null);
+
         super.onDestroyView();
     }
 }

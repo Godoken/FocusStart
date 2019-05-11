@@ -19,13 +19,17 @@ public class FragmentDialogDeleteChannel extends DialogFragment {
 
     private TextView message;
     private Button delete_button;
+    private Button cancel_button;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
+        setRetainInstance(true);
 
         View v = inflater.inflate(R.layout.fragment_dialog_delete_channel, null);
 
         message = v.findViewById(R.id.dialog_message);
         delete_button = v.findViewById(R.id.delete);
+        cancel_button = v.findViewById(R.id.cancel_delete);
 
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +37,13 @@ public class FragmentDialogDeleteChannel extends DialogFragment {
 
                 ChannelActivityViewModel channelActivityViewModel = ViewModelFactory.createViewModel();
                 channelActivityViewModel.onDeleteChannelClicked(channel);
+                dismiss();
+            }
+        });
+
+        cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dismiss();
             }
         });
@@ -49,6 +60,10 @@ public class FragmentDialogDeleteChannel extends DialogFragment {
     }
 
     public void onDestroyView() {
+
+        if (getDialog() != null && getRetainInstance())
+            getDialog().setDismissMessage(null);
+
         super.onDestroyView();
     }
 

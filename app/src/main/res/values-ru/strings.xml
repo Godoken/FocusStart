@@ -12,4 +12,5 @@
     <string name="_6">6 ч.</string>
     <string name="never">Никогда</string>
     <string name="update_news">Выберите периодичность обновления новостей</string>
+    <string name="cancel_delete">Отмена</string>
 </resources>

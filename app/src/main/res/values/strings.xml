@@ -12,4 +12,5 @@
     <string name="_6">6 ч.</string>
     <string name="never">Never</string>
     <string name="update_news">Select the frequency of news updates</string>
+    <string name="cancel_delete">Cancel</string>
 </resources>
