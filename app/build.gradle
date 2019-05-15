@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('/Applications/Android Studio.app/Contents/bin/Godoken')
+            storePassword '1246vg1246vg'
+            keyAlias = 'key_1246vg'
+            keyPassword '1246vg1246vg'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.myapplication"
@@ -9,11 +17,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
 
@@ -21,6 +31,7 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
 }
 
 dependencies {
