@@ -7,10 +7,13 @@
     <string name="create">Create</string>
     <string name="question_delete">Do you really want to delete the selected channel?</string>
     <string name="delete">Delete</string>
-    <string name="_30">30 мин.</string>
-    <string name="_2">2 ч.</string>
-    <string name="_6">6 ч.</string>
+    <string name="_30">30 m.</string>
+    <string name="_2">2 h.</string>
+    <string name="_6">6 h.</string>
     <string name="never">Never</string>
     <string name="update_news">Select the frequency of news updates</string>
     <string name="cancel_delete">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="on_back_pressed">Do you really want to go out?</string>
 </resources>

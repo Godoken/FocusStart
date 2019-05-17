@@ -13,4 +13,7 @@
     <string name="never">Никогда</string>
     <string name="update_news">Выберите периодичность обновления новостей</string>
     <string name="cancel_delete">Отмена</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="on_back_pressed">Вы действительно хотите выйти?</string>
 </resources>

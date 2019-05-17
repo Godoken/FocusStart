@@ -167,4 +167,10 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public void onBackPressed() {
+        view.showProgress();
+        view.openQuitDialog();
+        view.hideProgress();
+    }
 }

@@ -153,22 +153,23 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
 
     @Override
     public void onBackPressed() {
-        openQuitDialog();
+        channelActivityViewModel.onBackPressed();
     }
 
-    private void openQuitDialog() {
+    @Override
+    public void openQuitDialog() {
         AlertDialog.Builder quitDialog = new AlertDialog.Builder(
                 this);
-        quitDialog.setTitle("Вы действительно хотите выйти?");
+        quitDialog.setTitle(R.string.on_back_pressed);
 
-        quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+        quitDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
 
-        quitDialog.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+        quitDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }

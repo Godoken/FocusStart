@@ -23,6 +23,8 @@ interface ChannelListView extends InterfaceView {
 
     void startAppSettings();
 
+    void openQuitDialog();
+
     //void createChannelFromDeepLink(String url);
 
     //void checkDeepLink();

@@ -13,4 +13,7 @@
     <string name="never">Never</string>
     <string name="update_news">Select the frequency of news updates</string>
     <string name="cancel_delete">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="on_back_pressed">Do you really want to go out?</string>
 </resources>
