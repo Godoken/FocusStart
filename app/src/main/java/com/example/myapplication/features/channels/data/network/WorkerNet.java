@@ -2,6 +2,10 @@ package com.example.myapplication.features.channels.data.network;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
 import com.example.myapplication.App;
 import com.example.myapplication.features.channels.domain.model.Channel;
 
@@ -14,10 +18,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.work.Worker;
-import androidx.work.WorkerParameters;
 
 public class WorkerNet extends Worker {
 

@@ -23,6 +23,10 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
     private CheckBox checkBox3;
     private CheckBox checkBox4;
 
+    private CheckBox checkBox_dark;
+    private CheckBox checkBox_rainbow;
+    private CheckBox checkBox_default;
+
     @Override
     protected BaseViewModel<SettingsListView> getViewModel() {
         settingsActivityViewModel = ViewModelFactory.createSettingsActivityViewModel();
@@ -36,6 +40,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
 
@@ -55,7 +60,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked){
+                if (isChecked) {
                     settingsActivityViewModel.onSettingsChanged("30");
                 } else {
                     settingsActivityViewModel.onSettingsChanged("0");
@@ -68,10 +73,10 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked){
+                if (isChecked) {
                     settingsActivityViewModel.onSettingsChanged("120");
                 } else {
-                   settingsActivityViewModel.onSettingsChanged("0");
+                    settingsActivityViewModel.onSettingsChanged("0");
                 }
 
             }
@@ -81,7 +86,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked){
+                if (isChecked) {
                     settingsActivityViewModel.onSettingsChanged("360");
                 } else {
                     settingsActivityViewModel.onSettingsChanged("0");
@@ -94,28 +99,55 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked){
+                if (isChecked) {
                     settingsActivityViewModel.onSettingsChanged("0");
                 } else {
                 }
 
             }
         });
-    }
 
-    @Override
-    public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
+        checkBox_dark = findViewById(R.id.checkBox_dark);
+        checkBox_rainbow = findViewById(R.id.checkBox_rainbow);
+        checkBox_default = findViewById(R.id.checkBox_default);
 
-    @Override
-    public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
-    }
+        checkBox_dark.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-    @Override
-    public void showError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                if (isChecked) {
+                    settingsActivityViewModel.onStyleChanged("dark");
+                } else {
+                    settingsActivityViewModel.onStyleChanged("default");
+                }
+
+            }
+        });
+
+        checkBox_rainbow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    settingsActivityViewModel.onStyleChanged("rainbow");
+                } else {
+                    settingsActivityViewModel.onStyleChanged("default");
+                }
+
+            }
+        });
+
+        checkBox_default.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    settingsActivityViewModel.onStyleChanged("default");
+                } else {
+                }
+
+            }
+        });
     }
 
     @Override
@@ -151,5 +183,44 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                 checkBox3.setChecked(false);
                 break;
         }
+    }
+
+    @Override
+    public void showStyleSettings(String setting) {
+        switch (setting){
+
+            case "dark":
+                checkBox_dark.setChecked(true);
+                checkBox_rainbow.setChecked(false);
+                checkBox_default.setChecked(false);
+                break;
+
+            case "rainbow":
+                checkBox_dark.setChecked(false);
+                checkBox_rainbow.setChecked(true);
+                checkBox_default.setChecked(false);
+                break;
+
+            case "default":
+                checkBox_dark.setChecked(false);
+                checkBox_rainbow.setChecked(false);
+                checkBox_default.setChecked(true);
+                break;
+        }
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

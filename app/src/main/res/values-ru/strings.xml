@@ -16,4 +16,8 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="on_back_pressed">Вы действительно хотите выйти?</string>
+    <string name="select_the_style_of_application">Выберите тему приложения</string>
+    <string name="dark">Темная</string>
+    <string name="rainbow">Радужная</string>
+    <string name="style_default">Стандартная</string>
 </resources>

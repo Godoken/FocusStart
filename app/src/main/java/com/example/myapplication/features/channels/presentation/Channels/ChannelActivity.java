@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.R;
 import com.example.myapplication.features.BaseActivity;
 import com.example.myapplication.features.BaseViewModel;
@@ -17,11 +22,6 @@ import com.example.myapplication.features.news.presentation.NewsActivity;
 import com.example.myapplication.features.settings.presentation.SettingsActivity;
 
 import java.util.List;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class ChannelActivity extends BaseActivity implements ChannelListView {
 

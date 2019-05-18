@@ -24,4 +24,16 @@ public class SettingsRepositoryImpl implements SettingsRepository {
         settingsDataSource.setSettingsPreferences(settings, carry);
 
     }
+
+    @Override
+    public void setStyleSettings(String style, Carry<Success> carry) {
+
+        settingsDataSource.setStyleSettingsPreferences(style, carry);
+    }
+
+    @Override
+    public void getStyleSettings(Carry<String> carry) {
+
+        settingsDataSource.getStyleSettingsPreferences(carry);
+    }
 }

@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <CheckBox
@@ -55,5 +55,45 @@
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/never" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_settings_style"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:elevation="8dp"
+        android:text="@string/select_the_style_of_application"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkBox_dark"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="8dp"
+            android:text="@string/dark" />
+
+        <CheckBox
+            android:id="@+id/checkBox_rainbow"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="8dp"
+            android:text="@string/rainbow" />
+
+        <CheckBox
+            android:id="@+id/checkBox_default"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="8dp"
+            android:text="@string/style_default" />
+
     </LinearLayout>
 </LinearLayout>

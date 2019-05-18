@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.fragment.app.DialogFragment;
+
 import com.example.myapplication.R;
 import com.example.myapplication.features.channels.domain.model.Channel;
-
-import androidx.fragment.app.DialogFragment;
 
 public class FragmentDialogCreateChannel extends DialogFragment {
 

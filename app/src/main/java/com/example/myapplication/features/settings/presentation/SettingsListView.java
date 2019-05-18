@@ -2,8 +2,6 @@ package com.example.myapplication.features.settings.presentation;
 
 import com.example.myapplication.features.InterfaceView;
 
-import java.util.ArrayList;
-
 public interface SettingsListView extends InterfaceView {
 
     void showProgress();
@@ -13,4 +11,8 @@ public interface SettingsListView extends InterfaceView {
     void showError(String message);
 
     void showSettings(String setting);
+
+    void showStyleSettings(String setting);
+
+    //void setAppStyle(String style);
 }

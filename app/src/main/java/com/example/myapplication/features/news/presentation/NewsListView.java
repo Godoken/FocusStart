@@ -1,10 +1,8 @@
 package com.example.myapplication.features.news.presentation;
 
 import com.example.myapplication.features.InterfaceView;
-import com.example.myapplication.features.channels.domain.model.Channel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface NewsListView extends InterfaceView {
 
@@ -16,5 +14,4 @@ public interface NewsListView extends InterfaceView {
 
     void showError(String message);
 
-    void showNewsNet(String news);
 }

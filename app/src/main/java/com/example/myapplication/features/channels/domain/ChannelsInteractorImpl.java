@@ -1,7 +1,6 @@
 package com.example.myapplication.features.channels.domain;
 
 import com.example.myapplication.exceptions.EmptyBodyException;
-import com.example.myapplication.features.channels.data.ChannelsRepositoryImpl;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
 import com.example.myapplication.network.Carry;

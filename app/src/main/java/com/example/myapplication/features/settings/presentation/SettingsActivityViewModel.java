@@ -17,6 +17,7 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
     @Override
     protected void onViewReady() {
         showSettings();
+        showStyleSettings();
     }
 
     private void showSettings() {
@@ -39,6 +40,26 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
 
     }
 
+    private void showStyleSettings() {
+        view.showProgress();
+        settingsInteractor.getStyleAppSettings(new Carry<String>() {
+            @Override
+            public void onSuccess(String style) {
+
+                view.showStyleSettings(style);
+                view.hideProgress();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+                view.showError(throwable.getMessage());
+                view.hideProgress();
+            }
+        });
+
+    }
+
     public void onSettingsChanged(String settings){
 
         view.showProgress();
@@ -47,6 +68,25 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
             public void onSuccess(Success result) {
 
                 view.showSettings(settings);
+                view.hideProgress();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+                view.showError(throwable.getMessage());
+                view.hideProgress();
+            }
+        });
+    }
+
+    public void onStyleChanged(String style) {
+        view.showProgress();
+        settingsInteractor.setStyleAppSettings(style, new Carry<Success>() {
+            @Override
+            public void onSuccess(Success result) {
+
+                view.showStyleSettings(style);
                 view.hideProgress();
             }
 

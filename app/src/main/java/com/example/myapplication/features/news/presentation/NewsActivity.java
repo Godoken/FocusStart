@@ -80,9 +80,4 @@ public class NewsActivity extends BaseActivity implements NewsListView {
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
-    @Override
-    public void showNewsNet(String news) {
-
-    }
 }

@@ -17,12 +17,16 @@ public class SettingDataSourceImpl implements SettingsDataSource {
     private SharedPreferences sharedPreferences;
     private String settings_key;
 
+    private String style_settings_key;
+
     private PeriodicWorkRequest periodicWorkRequest;
     private String periodic_tag = "TAG_PERIODIC_WORKER_NET";
 
     public SettingDataSourceImpl(SharedPreferences sharedPreferences){
+
         this.sharedPreferences  = sharedPreferences;
         this.settings_key = "SETTINGS_KEY";
+        this.style_settings_key = "STYLE_SETTINGS_KEY";
     }
 
     @Override
@@ -53,6 +57,36 @@ public class SettingDataSourceImpl implements SettingsDataSource {
                 carry.onSuccess(new Success());
             }
 
+        } else {
+            carry.onFailure(new EmptyBodyException());
+        }
+    }
+
+    @Override
+    public void setStyleSettingsPreferences(String style, Carry<Success> carry) {
+
+        if (sharedPreferences != null){
+
+            if (sharedPreferences.contains(style_settings_key)){
+
+                sharedPreferences.edit().remove(style_settings_key).apply();
+                sharedPreferences.edit().putString(style_settings_key, style).apply();
+                carry.onSuccess(new Success());
+
+            } else {
+                sharedPreferences.edit().putString(style_settings_key, style).apply();
+                carry.onSuccess(new Success());
+            }
+
+        } else {
+            carry.onFailure(new EmptyBodyException());
+        }
+    }
+
+    @Override
+    public void getStyleSettingsPreferences(Carry<String> carry) {
+        if (sharedPreferences.contains(style_settings_key)){
+            carry.onSuccess(sharedPreferences.getString(style_settings_key,  "default"));
         } else {
             carry.onFailure(new EmptyBodyException());
         }

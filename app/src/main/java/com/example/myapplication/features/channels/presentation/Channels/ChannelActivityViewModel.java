@@ -92,18 +92,13 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
 
     public void onCreateChannelClicked(Channel channel) {
 
-        //view.showProgress();
         interactor.createChannel(channel, new Carry<Channel>() {
             @Override
             public void onSuccess(Channel result) {
-                // Do toast
-                //view.hideProgress();
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-                // Do toast
-                //view.hideProgress();
             }
         });
     }

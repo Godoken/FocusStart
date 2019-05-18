@@ -13,15 +13,21 @@ public class SettingsInteractorImpl implements SettingsInteractor {
 
     @Override
     public void getAppSettings(Carry<String> carry) {
-
         settingsRepository.getSettings(carry);
-
     }
 
     @Override
     public void setAppSettings(String settings, Carry<Success> carry) {
-
         settingsRepository.setSettings(settings, carry);
+    }
 
+    @Override
+    public void setStyleAppSettings(String style, Carry<Success> carry) {
+        settingsRepository.setStyleSettings(style, carry);
+    }
+
+    @Override
+    public void getStyleAppSettings(Carry<String> carry) {
+        settingsRepository.getStyleSettings(carry);
     }
 }

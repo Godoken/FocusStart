@@ -2,9 +2,10 @@ package com.example.myapplication;
 
 import android.app.Application;
 import android.content.Context;
-import com.example.myapplication.features.channels.data.room.AppDataBase;
 
 import androidx.room.Room;
+
+import com.example.myapplication.features.channels.data.room.AppDataBase;
 
 public class App extends Application {
 

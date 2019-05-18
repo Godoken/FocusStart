@@ -16,4 +16,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="on_back_pressed">Do you really want to go out?</string>
+    <string name="select_the_style_of_application">Select the style of application</string>
+    <string name="dark">Dark</string>
+    <string name="rainbow">Rainbow</string>
+    <string name="style_default" translatable="false">Default</string>
 </resources>
