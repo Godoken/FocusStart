@@ -25,14 +25,11 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
         settingsInteractor.getAppSettings(new Carry<String>() {
             @Override
             public void onSuccess(String result) {
-
-                view.showSettings(result);
                 view.hideProgress();
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-
                 view.showError(throwable.getMessage());
                 view.hideProgress();
             }
@@ -45,14 +42,11 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
         settingsInteractor.getStyleAppSettings(new Carry<String>() {
             @Override
             public void onSuccess(String style) {
-
-                view.showStyleSettings(style);
                 view.hideProgress();
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-
                 view.showError(throwable.getMessage());
                 view.hideProgress();
             }
@@ -66,14 +60,11 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
         settingsInteractor.setAppSettings(settings, new Carry<Success>() {
             @Override
             public void onSuccess(Success result) {
-
-                view.showSettings(settings);
                 view.hideProgress();
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-
                 view.showError(throwable.getMessage());
                 view.hideProgress();
             }
@@ -85,14 +76,11 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
         settingsInteractor.setStyleAppSettings(style, new Carry<Success>() {
             @Override
             public void onSuccess(Success result) {
-
-                view.showStyleSettings(style);
                 view.hideProgress();
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-
                 view.showError(throwable.getMessage());
                 view.hideProgress();
             }

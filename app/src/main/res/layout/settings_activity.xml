@@ -19,43 +19,45 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/periodic_radio_group"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_30"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/_30" />
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/_2" />
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_6"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/_6" />
 
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_never"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/never" />
-    </LinearLayout>
+    </RadioGroup>
+
 
     <TextView
         android:id="@+id/text_settings_style"
@@ -66,34 +68,36 @@
         android:textAlignment="center"
         android:textSize="24sp" />
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/style_radio_group"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/checkBox_dark"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_dark"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/dark" />
 
-        <CheckBox
-            android:id="@+id/checkBox_rainbow"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_rainbow"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/rainbow" />
 
-        <CheckBox
-            android:id="@+id/checkBox_default"
-            android:layout_width="35dp"
+        <RadioButton
+            android:id="@+id/radio_default"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="8dp"
             android:text="@string/style_default" />
 
-    </LinearLayout>
+    </RadioGroup>
+
 </LinearLayout>
