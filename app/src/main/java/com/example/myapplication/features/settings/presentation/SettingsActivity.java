@@ -48,7 +48,6 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
         progressBar = findViewById(R.id.settings_progress);
 
         periodicRadioGroup = findViewById(R.id.periodic_radio_group);
-        LoadPeriodicPreferences();
 
         periodicRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -60,51 +59,37 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         break;
 
                     case R.id.radio_30:
-                        settingsActivityViewModel.onSettingsChanged("30");
 
-                        ///
                         RadioButton checkedRadioButton = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex = periodicRadioGroup.indexOfChild(checkedRadioButton);
-                        SavePeriodicPreferences("period", checkedIndex);
-                        ///
-
+                        settingsActivityViewModel.onSettingsChanged("30", checkedIndex);
                         break;
 
                     case R.id.radio_2:
-                        settingsActivityViewModel.onSettingsChanged("120");
 
                         ///
                         RadioButton checkedRadioButton1 = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex1 = periodicRadioGroup.indexOfChild(checkedRadioButton1);
-                        SavePeriodicPreferences("period", checkedIndex1);
-                        ///
-
+                        settingsActivityViewModel.onSettingsChanged("120", checkedIndex1);
                         break;
 
                     case R.id.radio_6:
-                        settingsActivityViewModel.onSettingsChanged("360");
 
                         ///
                         RadioButton checkedRadioButton2 = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex2 = periodicRadioGroup.indexOfChild(checkedRadioButton2);
-                        SavePeriodicPreferences("period", checkedIndex2);
-                        ///
-
+                        settingsActivityViewModel.onSettingsChanged("360", checkedIndex2);
                         break;
 
                     case R.id.radio_never:
-                        settingsActivityViewModel.onSettingsChanged("0");
 
-                        ///
                         RadioButton checkedRadioButton3 = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex3 = periodicRadioGroup.indexOfChild(checkedRadioButton3);
-                        SavePeriodicPreferences("period", checkedIndex3);
-                        ///
-
+                        settingsActivityViewModel.onSettingsChanged("0", checkedIndex3);
                         break;
 
                     default:
@@ -115,7 +100,6 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
         });
 
         styleRadioGroup =  findViewById(R.id.style_radio_group);
-        LoadStylePreferences();
 
         styleRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -127,39 +111,27 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         break;
 
                     case R.id.radio_dark:
-                        settingsActivityViewModel.onStyleChanged("dark");
 
-                        ///
                         RadioButton checkedRadioButton = (RadioButton) styleRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex = styleRadioGroup.indexOfChild(checkedRadioButton);
-                        SaveStylePreferences("sly", checkedIndex);
-                        ///
-
+                        settingsActivityViewModel.onStyleChanged("dark", checkedIndex);
                         break;
 
                     case R.id.radio_rainbow:
-                        settingsActivityViewModel.onStyleChanged("rainbow");
 
-                        ///
                         RadioButton checkedRadioButton1 = (RadioButton) styleRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex1 = styleRadioGroup.indexOfChild(checkedRadioButton1);
-                        SaveStylePreferences("sly", checkedIndex1);
-                        ///
-
+                        settingsActivityViewModel.onStyleChanged("rainbow", checkedIndex1);
                         break;
 
                     case R.id.radio_default:
-                        settingsActivityViewModel.onStyleChanged("default");
 
-                        ///
                         RadioButton checkedRadioButton2 = (RadioButton) styleRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex2 = styleRadioGroup.indexOfChild(checkedRadioButton2);
-                        SaveStylePreferences("style", checkedIndex2);
-                        ///
-
+                        settingsActivityViewModel.onStyleChanged("default", checkedIndex2);
                         break;
 
                     default:
@@ -171,33 +143,15 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
 
     }
 
-    private void SaveStylePreferences(String key, int value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.putInt(key, value);
-        edit.apply();
-    }
-
-    private void LoadStylePreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int savedRadioIndex = sharedPreferences.getInt(
-                "style", 0);
+    @Override
+    public void loadStylePreferences(int savedRadioIndex) {
         RadioButton savedCheckedRadioButton = (RadioButton) styleRadioGroup
                 .getChildAt(savedRadioIndex);
         savedCheckedRadioButton.setChecked(true);
     }
 
-    private void SavePeriodicPreferences(String key, int value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.putInt(key, value);
-        edit.apply();
-    }
-
-    private void LoadPeriodicPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int savedPeriodicIndex = sharedPreferences.getInt(
-                "period", 0);
+    @Override
+    public void loadPeriodicPreferences(int savedPeriodicIndex) {
         RadioButton savedCheckedRadioButton = (RadioButton) periodicRadioGroup
                 .getChildAt(savedPeriodicIndex);
         savedCheckedRadioButton.setChecked(true);

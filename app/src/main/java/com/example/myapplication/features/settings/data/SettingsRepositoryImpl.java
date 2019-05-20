@@ -19,16 +19,16 @@ public class SettingsRepositoryImpl implements SettingsRepository {
     }
 
     @Override
-    public void setSettings(String settings, Carry<Success> carry) {
+    public void setSettings(String settings, int index, Carry<Success> carry) {
 
-        settingsDataSource.setSettingsPreferences(settings, carry);
+        settingsDataSource.setSettingsPreferences(settings, index, carry);
 
     }
 
     @Override
-    public void setStyleSettings(String style, Carry<Success> carry) {
+    public void setStyleSettings(String style, int index, Carry<Success> carry) {
 
-        settingsDataSource.setStyleSettingsPreferences(style, carry);
+        settingsDataSource.setStyleSettingsPreferences(style, index, carry);
     }
 
     @Override

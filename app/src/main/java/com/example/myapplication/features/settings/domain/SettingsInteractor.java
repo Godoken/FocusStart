@@ -7,9 +7,9 @@ public interface SettingsInteractor {
 
     void getAppSettings(Carry<String> carry);
 
-    void setAppSettings(String settings, Carry<Success> carry);
+    void setAppSettings(String settings, int index, Carry<Success> carry);
 
-    void setStyleAppSettings(String style, Carry<Success> carry);
+    void setStyleAppSettings(String style, int index, Carry<Success> carry);
 
     void getStyleAppSettings(Carry<String> carry);
 }

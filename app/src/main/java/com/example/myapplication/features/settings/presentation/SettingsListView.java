@@ -9,4 +9,8 @@ public interface SettingsListView extends InterfaceView {
     void hideProgress();
 
     void showError(String message);
+
+    void loadStylePreferences(int index);
+
+    void loadPeriodicPreferences(int index);
 }

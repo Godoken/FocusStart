@@ -7,9 +7,9 @@ public interface SettingsRepository {
 
     void getSettings(Carry<String> carry);
 
-    void setSettings(String settings, Carry<Success> carry);
+    void setSettings(String settings, int index, Carry<Success> carry);
 
-    void setStyleSettings(String style, Carry<Success> carry);
+    void setStyleSettings(String style, int index, Carry<Success> carry);
 
     void getStyleSettings(Carry<String> carry);
 }

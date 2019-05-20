@@ -32,15 +32,18 @@ public class SettingDataSourceImpl implements SettingsDataSource {
     @Override
     public void getSettingsPreferences(Carry<String> settings) {
 
-        if (sharedPreferences.contains(settings_key)){
-            settings.onSuccess(sharedPreferences.getString(settings_key,  "0"));
+        int savedRadioIndex = sharedPreferences.getInt(
+                "style", -1);
+
+        if (savedRadioIndex != -1){
+            settings.onSuccess(String.valueOf(savedRadioIndex));
         } else {
             settings.onFailure(new EmptyBodyException());
         }
     }
 
     @Override
-    public void setSettingsPreferences(String settings, Carry<Success> carry) {
+    public void setSettingsPreferences(String settings, int index, Carry<Success> carry) {
 
         if (sharedPreferences != null){
 
@@ -48,11 +51,21 @@ public class SettingDataSourceImpl implements SettingsDataSource {
 
                 sharedPreferences.edit().remove(settings_key).apply();
                 sharedPreferences.edit().putString(settings_key, settings).apply();
+
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt("period", index);
+                edit.apply();
+
                 startPeriodicWorker();
                 carry.onSuccess(new Success());
 
             } else {
                 sharedPreferences.edit().putString(settings_key, settings).apply();
+
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt("period", index);
+                edit.apply();
+
                 startPeriodicWorker();
                 carry.onSuccess(new Success());
             }
@@ -63,7 +76,7 @@ public class SettingDataSourceImpl implements SettingsDataSource {
     }
 
     @Override
-    public void setStyleSettingsPreferences(String style, Carry<Success> carry) {
+    public void setStyleSettingsPreferences(String style, int index, Carry<Success> carry) {
 
         if (sharedPreferences != null){
 
@@ -71,10 +84,20 @@ public class SettingDataSourceImpl implements SettingsDataSource {
 
                 sharedPreferences.edit().remove(style_settings_key).apply();
                 sharedPreferences.edit().putString(style_settings_key, style).apply();
+
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt("style", index);
+                edit.apply();
+
                 carry.onSuccess(new Success());
 
             } else {
                 sharedPreferences.edit().putString(style_settings_key, style).apply();
+
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt("style", index);
+                edit.apply();
+
                 carry.onSuccess(new Success());
             }
 
@@ -85,8 +108,12 @@ public class SettingDataSourceImpl implements SettingsDataSource {
 
     @Override
     public void getStyleSettingsPreferences(Carry<String> carry) {
-        if (sharedPreferences.contains(style_settings_key)){
-            carry.onSuccess(sharedPreferences.getString(style_settings_key,  "default"));
+
+        int savedRadioIndex = sharedPreferences.getInt(
+                "period", -1);
+
+        if (savedRadioIndex != -1){
+            carry.onSuccess(String.valueOf(savedRadioIndex));
         } else {
             carry.onFailure(new EmptyBodyException());
         }
