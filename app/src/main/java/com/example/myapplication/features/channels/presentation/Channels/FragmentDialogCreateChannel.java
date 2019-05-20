@@ -40,17 +40,14 @@ public class FragmentDialogCreateChannel extends DialogFragment {
 
                 if ((!edit_name.getText().toString().equals("")) | (!edit_url.getText().toString().equals(""))){
 
-                    ChannelActivityViewModel channelActivityViewModel = ViewModelFactory.createViewModel();
+                    FragmentViewModel fragmentViewModel = ViewModelFactory.createFragmentViewModel();
 
                     url = edit_url.getText().toString();
                     name = edit_name.getText().toString();
 
                     Channel channel = new Channel(name, "", url);
-                    channelActivityViewModel.onCreateChannelClicked(channel);
-                } else {
-
+                    fragmentViewModel.onCreateChannelClicked(channel);
                 }
-
                 dismiss();
             }
         });

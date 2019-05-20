@@ -103,8 +103,6 @@ public class ChannelDataSourceImpl implements ChannelsDataSource  {
     @Override
     public void createChannel(Channel channel, Carry<Channel> carry) {
 
-        //App.getDataBase().getChannelDao().insert(channel);
-
         data = new Data.Builder().putString("url", channel.getUrl()).putString("name", channel.getName()).build();
 
         OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(WorkerInsertChannel.class).setInputData(data).build();

@@ -18,4 +18,13 @@ final class ViewModelFactory {
         return new ChannelActivityViewModel(channelsInteractor);
 
     }
+
+    static FragmentViewModel createFragmentViewModel(){
+
+        final ChannelsDataSource channelsDataSource = new ChannelDataSourceImpl();
+        final ChannelsRepository channelsRepository = new ChannelsRepositoryImpl(channelsDataSource);
+        final ChannelsInteractor channelsInteractor = new ChannelsInteractorImpl(channelsRepository);
+
+        return new FragmentViewModel(channelsInteractor);
+    }
 }

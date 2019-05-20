@@ -177,4 +177,9 @@ public class ChannelActivity extends BaseActivity implements ChannelListView {
 
         quitDialog.show();
     }
+
+    @Override
+    public void onRestart(){
+        super.onRestart();
+    }
 }

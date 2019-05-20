@@ -72,6 +72,7 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
                     view.showChannelList(result);
                     view.hideProgress();
                 }
+
             }
 
             @Override

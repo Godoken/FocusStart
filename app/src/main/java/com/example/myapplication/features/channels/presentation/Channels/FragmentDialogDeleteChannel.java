@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.myapplication.R;
@@ -34,9 +35,8 @@ public class FragmentDialogDeleteChannel extends DialogFragment {
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ChannelActivityViewModel channelActivityViewModel = ViewModelFactory.createViewModel();
-                channelActivityViewModel.onDeleteChannelClicked(channel);
+                FragmentViewModel fragmentViewModel = ViewModelFactory.createFragmentViewModel();
+                fragmentViewModel.onDeleteChannelClicked(channel);
                 dismiss();
             }
         });
