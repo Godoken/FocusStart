@@ -24,20 +24,20 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
 
     @Override
     protected void onViewReady() {
-        checkDeepLink(new Carry<Success>() {
+
+        loadChannels(new Carry<Success>() {
             @Override
             public void onSuccess(Success result) {
-                loadChannels();
+                checkDeepLink();
             }
 
             @Override
             public void onFailure(Throwable throwable) {
-
             }
         });
     }
 
-    private void checkDeepLink(Carry<Success> carry){
+    private void checkDeepLink(){
          if (Intent.ACTION_VIEW.equals(action) && url != null){
              Channel channel = new Channel(url.substring(url.lastIndexOf("/")), "", url);
              action = null;
@@ -45,21 +45,16 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
              interactor.createChannel(channel, new Carry<Channel>() {
                  @Override
                  public void onSuccess(Channel result) {
-                     //
-                     carry.onSuccess(new Success());
                  }
 
                  @Override
                  public void onFailure(Throwable throwable) {
-                    //
                  }
              });
-         } else {
-             carry.onSuccess(new Success());
          }
      }
 
-    private void loadChannels(){
+    private void loadChannels(Carry<Success> carry){
 
         view.showProgress();
         interactor.loadChannels(new Carry<List<Channel>>() {
@@ -68,10 +63,10 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
             public void onSuccess(List<Channel> result) {
 
                 if (view != null){
-
                     view.showChannelList(result);
                     view.hideProgress();
                 }
+                carry.onSuccess(new Success());
 
             }
 
@@ -89,19 +84,6 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         view.showProgress();
         view.createChannel();
         view.hideProgress();
-    }
-
-    public void onCreateChannelClicked(Channel channel) {
-
-        interactor.createChannel(channel, new Carry<Channel>() {
-            @Override
-            public void onSuccess(Channel result) {
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-            }
-        });
     }
 
     public void onChannelSelected(Channel channel) {
@@ -132,21 +114,6 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
         view.showProgress();
         view.deleteChannel(channel);
         view.hideProgress();
-    }
-
-    public void onDeleteChannelClicked(Channel channel){
-
-        interactor.deleteChannel(channel, new Carry<Success>() {
-            @Override
-            public void onSuccess(Success result) {
-                //
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                //
-            }
-        });
     }
 
     public void onSettingsAppActivityClicked() {
