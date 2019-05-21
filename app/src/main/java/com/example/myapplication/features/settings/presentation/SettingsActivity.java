@@ -1,8 +1,6 @@
 package com.example.myapplication.features.settings.presentation;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;

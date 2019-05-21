@@ -94,10 +94,7 @@ public class ChannelActivityViewModel extends BaseViewModel<ChannelListView> {
             @Override
             public void onSuccess(String result_news) {
                 view.hideProgress();
-
-                //Test
                 view.showNews(result_news);
-                // do something
             }
 
             @Override
