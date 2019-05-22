@@ -16,7 +16,7 @@ import com.example.myapplication.features.channels.data.room.WorkerInsertChannel
 import com.example.myapplication.features.channels.data.room.WorkerQueryChannel;
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
-import com.example.myapplication.network.Carry;
+import com.example.myapplication.support.Carry;
 
 import java.util.ArrayList;
 import java.util.List;

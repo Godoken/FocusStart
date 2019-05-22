@@ -7,6 +7,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.myapplication.App;
 import com.example.myapplication.R;
 import com.example.myapplication.features.BaseActivity;
 import com.example.myapplication.features.BaseViewModel;
@@ -61,25 +62,23 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         RadioButton checkedRadioButton = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex = periodicRadioGroup.indexOfChild(checkedRadioButton);
-                        settingsActivityViewModel.onSettingsChanged("30", checkedIndex);
+                        settingsActivityViewModel.onPeriodSettingsChanged(App.getSupporterSharedPreferences().getFirstPeriodValue(), checkedIndex);
                         break;
 
                     case R.id.radio_2:
 
-                        ///
                         RadioButton checkedRadioButton1 = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex1 = periodicRadioGroup.indexOfChild(checkedRadioButton1);
-                        settingsActivityViewModel.onSettingsChanged("120", checkedIndex1);
+                        settingsActivityViewModel.onPeriodSettingsChanged(App.getSupporterSharedPreferences().getSecondPeriodValue(), checkedIndex1);
                         break;
 
                     case R.id.radio_6:
 
-                        ///
                         RadioButton checkedRadioButton2 = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex2 = periodicRadioGroup.indexOfChild(checkedRadioButton2);
-                        settingsActivityViewModel.onSettingsChanged("360", checkedIndex2);
+                        settingsActivityViewModel.onPeriodSettingsChanged(App.getSupporterSharedPreferences().getThirdPeriodValue(), checkedIndex2);
                         break;
 
                     case R.id.radio_never:
@@ -87,7 +86,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         RadioButton checkedRadioButton3 = (RadioButton) periodicRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex3 = periodicRadioGroup.indexOfChild(checkedRadioButton3);
-                        settingsActivityViewModel.onSettingsChanged("0", checkedIndex3);
+                        settingsActivityViewModel.onPeriodSettingsChanged(App.getSupporterSharedPreferences().getFourthPeriodValue(), checkedIndex3);
                         break;
 
                     default:
@@ -113,7 +112,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         RadioButton checkedRadioButton = (RadioButton) styleRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex = styleRadioGroup.indexOfChild(checkedRadioButton);
-                        settingsActivityViewModel.onStyleChanged("dark", checkedIndex);
+                        settingsActivityViewModel.onStyleChanged(App.getSupporterSharedPreferences().getFirstStyleValue(), checkedIndex);
                         break;
 
                     case R.id.radio_rainbow:
@@ -121,7 +120,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         RadioButton checkedRadioButton1 = (RadioButton) styleRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex1 = styleRadioGroup.indexOfChild(checkedRadioButton1);
-                        settingsActivityViewModel.onStyleChanged("rainbow", checkedIndex1);
+                        settingsActivityViewModel.onStyleChanged(App.getSupporterSharedPreferences().getSecondStyleValue(), checkedIndex1);
                         break;
 
                     case R.id.radio_default:
@@ -129,7 +128,7 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                         RadioButton checkedRadioButton2 = (RadioButton) styleRadioGroup
                                 .findViewById(checkedId);
                         int checkedIndex2 = styleRadioGroup.indexOfChild(checkedRadioButton2);
-                        settingsActivityViewModel.onStyleChanged("default", checkedIndex2);
+                        settingsActivityViewModel.onStyleChanged(App.getSupporterSharedPreferences().getThirdStyleValue(), checkedIndex2);
                         break;
 
                     default:
@@ -138,7 +137,6 @@ public class SettingsActivity extends BaseActivity implements SettingsListView {
                 }
             }
         });
-
     }
 
     @Override

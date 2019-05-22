@@ -2,7 +2,7 @@ package com.example.myapplication.features.channels.domain;
 
 import com.example.myapplication.features.channels.domain.model.Channel;
 import com.example.myapplication.features.channels.domain.model.Success;
-import com.example.myapplication.network.Carry;
+import com.example.myapplication.support.Carry;
 
 import java.util.List;
 

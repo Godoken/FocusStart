@@ -2,7 +2,7 @@ package com.example.myapplication.features.settings.data;
 
 import com.example.myapplication.features.channels.domain.model.Success;
 import com.example.myapplication.features.settings.domain.SettingsRepository;
-import com.example.myapplication.network.Carry;
+import com.example.myapplication.support.Carry;
 
 public class SettingsRepositoryImpl implements SettingsRepository {
 
@@ -12,16 +12,16 @@ public class SettingsRepositoryImpl implements SettingsRepository {
         this.settingsDataSource = settingsDataSource;
     }
     @Override
-    public void getSettings(Carry<String> carry) {
+    public void getPeriodSettings(Carry<Integer> carry) {
 
-        settingsDataSource.getSettingsPreferences(carry);
+        settingsDataSource.getPeriodSettingsPreferences(carry);
 
     }
 
     @Override
-    public void setSettings(String settings, int index, Carry<Success> carry) {
+    public void setPeriodSettings(int period, int index, Carry<Success> carry) {
 
-        settingsDataSource.setSettingsPreferences(settings, index, carry);
+        settingsDataSource.setPeriodSettingsPreferences(period, index, carry);
 
     }
 
@@ -32,7 +32,7 @@ public class SettingsRepositoryImpl implements SettingsRepository {
     }
 
     @Override
-    public void getStyleSettings(Carry<String> carry) {
+    public void getStyleSettings(Carry<Integer> carry) {
 
         settingsDataSource.getStyleSettingsPreferences(carry);
     }

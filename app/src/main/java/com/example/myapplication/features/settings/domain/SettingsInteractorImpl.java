@@ -1,7 +1,7 @@
 package com.example.myapplication.features.settings.domain;
 
 import com.example.myapplication.features.channels.domain.model.Success;
-import com.example.myapplication.network.Carry;
+import com.example.myapplication.support.Carry;
 
 public class SettingsInteractorImpl implements SettingsInteractor {
 
@@ -12,13 +12,13 @@ public class SettingsInteractorImpl implements SettingsInteractor {
     }
 
     @Override
-    public void getAppSettings(Carry<String> carry) {
-        settingsRepository.getSettings(carry);
+    public void getPeriodAppSettings(Carry<Integer> carry) {
+        settingsRepository.getPeriodSettings(carry);
     }
 
     @Override
-    public void setAppSettings(String settings, int index, Carry<Success> carry) {
-        settingsRepository.setSettings(settings, index, carry);
+    public void setPeriodAppSettings(int period, int index, Carry<Success> carry) {
+        settingsRepository.setPeriodSettings(period, index, carry);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class SettingsInteractorImpl implements SettingsInteractor {
     }
 
     @Override
-    public void getStyleAppSettings(Carry<String> carry) {
+    public void getStyleAppSettings(Carry<Integer> carry) {
         settingsRepository.getStyleSettings(carry);
     }
 }

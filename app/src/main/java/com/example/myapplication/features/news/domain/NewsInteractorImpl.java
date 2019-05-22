@@ -1,7 +1,7 @@
 package com.example.myapplication.features.news.domain;
 
 import com.example.myapplication.exceptions.EmptyBodyException;
-import com.example.myapplication.network.Carry;
+import com.example.myapplication.support.Carry;
 
 import java.util.ArrayList;
 import java.util.Arrays;

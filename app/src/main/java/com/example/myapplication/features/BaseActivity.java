@@ -1,14 +1,12 @@
 package com.example.myapplication.features;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
 
-import com.example.myapplication.R;
+import com.example.myapplication.App;
 
 public abstract class BaseActivity extends AppCompatActivity implements LifecycleOwner {
 
@@ -38,22 +36,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Lifecycl
     }
 
     private void checkAppTheme(){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        String style = sp.getString("STYLE_SETTINGS_KEY", "default");
-
-        switch (style){
-            case "dark":
-                setTheme(R.style.Theme_AppCompat_Light_DarkActionBar);
-                break;
-
-            case "rainbow":
-                setTheme(R.style.AppRainbow);
-                break;
-
-            case "default":
-                setTheme(R.style.AppTheme);
-                break;
-        }
+        int theme = App.getSupporterSharedPreferences().getTheme();
+        setTheme(theme);
     }
 
 }

@@ -3,7 +3,7 @@ package com.example.myapplication.features.settings.presentation;
 import com.example.myapplication.features.BaseViewModel;
 import com.example.myapplication.features.channels.domain.model.Success;
 import com.example.myapplication.features.settings.domain.SettingsInteractor;
-import com.example.myapplication.network.Carry;
+import com.example.myapplication.support.Carry;
 
 public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
 
@@ -16,16 +16,16 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
 
     @Override
     protected void onViewReady() {
-        showSettings();
+        showPeriodSettings();
         showStyleSettings();
     }
 
-    private void showSettings() {
+    private void showPeriodSettings() {
         view.showProgress();
-        settingsInteractor.getAppSettings(new Carry<String>() {
+        settingsInteractor.getPeriodAppSettings(new Carry<Integer>() {
             @Override
-            public void onSuccess(String result) {
-                view.loadStylePreferences(Integer.parseInt(result));
+            public void onSuccess(Integer period) {
+                view.loadPeriodicPreferences(period);
                 view.hideProgress();
             }
 
@@ -40,10 +40,10 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
 
     private void showStyleSettings() {
         view.showProgress();
-        settingsInteractor.getStyleAppSettings(new Carry<String>() {
+        settingsInteractor.getStyleAppSettings(new Carry<Integer>() {
             @Override
-            public void onSuccess(String style) {
-                view.loadPeriodicPreferences(Integer.parseInt(style));
+            public void onSuccess(Integer style) {
+                view.loadStylePreferences(style);
                 view.hideProgress();
             }
 
@@ -56,10 +56,10 @@ public class SettingsActivityViewModel extends BaseViewModel<SettingsListView> {
 
     }
 
-    public void onSettingsChanged(String settings, int index){
+    public void onPeriodSettingsChanged(int period, int index){
 
         view.showProgress();
-        settingsInteractor.setAppSettings(settings, index, new Carry<Success>() {
+        settingsInteractor.setPeriodAppSettings(period, index, new Carry<Success>() {
             @Override
             public void onSuccess(Success result) {
                 view.hideProgress();
