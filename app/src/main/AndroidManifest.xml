@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".features.channels.presentation.Channels.ChannelActivity"
+        <activity android:name=".features.channels.presentation.ChannelActivity"
             android:screenOrientation="fullUser">
 
             <intent-filter>

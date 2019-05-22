@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.presentation.Channels;
+package com.example.myapplication.features.channels.presentation;
 
 import com.example.myapplication.features.InterfaceView;
 import com.example.myapplication.features.channels.domain.model.Channel;

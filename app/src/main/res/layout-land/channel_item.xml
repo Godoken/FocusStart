@@ -10,8 +10,8 @@
     <TextView
         android:id="@+id/channel_item_name"
         style="@style/Base.TextAppearance.AppCompat.Body2"
-        android:layout_width="394dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:elevation="4dp"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -19,8 +19,8 @@
     <TextView
         android:id="@+id/channel_item_url"
         style="@style/Base.TextAppearance.AppCompat.Body1"
-        android:layout_width="425dp"
-        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:elevation="4dp"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="14sp" />

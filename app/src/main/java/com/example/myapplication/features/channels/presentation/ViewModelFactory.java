@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.presentation.Channels;
+package com.example.myapplication.features.channels.presentation;
 
 import com.example.myapplication.features.channels.data.ChannelDataSourceImpl;
 import com.example.myapplication.features.channels.data.ChannelsDataSource;

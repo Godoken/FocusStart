@@ -1,4 +1,4 @@
-package com.example.myapplication.features.channels.presentation.Channels;
+package com.example.myapplication.features.channels.presentation;
 
 import android.content.Intent;
 

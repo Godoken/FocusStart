@@ -65,15 +65,7 @@ public class WorkerNet extends Worker {
                             if (xmlPullParser.getName().equalsIgnoreCase("title")){
 
                                 if (insideItem){
-                                    titles = titles.concat(xmlPullParser.nextText() + ";");
-                                }
-                            }
-                            else {
-
-                                if (xmlPullParser.getName().equalsIgnoreCase("link")){
-
-                                    if (insideItem){
-                                    }
+                                    titles = titles.concat(xmlPullParser.nextText() + "<");
                                 }
                             }
                         }
